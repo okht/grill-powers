@@ -38,7 +38,7 @@ Combines the best of **Grill Me** and **Superpowers**, then hard-separates the s
 
 <br>
 
-[🎯 Why](#-why-grillpowers-exists) · [🧩 Stages](#-three-stages-one-product-manager-role) · [🗺 Workflow](#-workflow) · [⚡ Install](#-install) · [🚀 Usage](#-usage) · [🎬 Example](#-example-saved-search-links) · [📂 Structure](#-project-structure)
+[🎯 Why](#-why-grillpowers-exists) · [🧩 Stages](#-three-stages-one-product-manager-role) · [🗺 Workflow](#-workflow) · [🔁 Re-entry](#-when-requirements-change-mid-flight) · [⚡ Install](#-install) · [🚀 Usage](#-usage) · [🎬 Example](#-example-saved-search-links)
 
 [**English**](README.md) · [**简体中文**](docs/lang/README_ZH.md)
 
@@ -89,7 +89,7 @@ GrillPowers keeps the strengths of both systems and introduces three hard stage 
 |---|---|---|
 | Product and technical questions are discussed together. | Finish and approve product design before technical design begins. | Scope converges around product value and acceptance criteria. |
 | The user is expected to answer implementation questions. | The agent owns architecture, data, interfaces, tests, and task planning. | The user only needs to act as the product manager. |
-| Technical possibilities repeatedly expand the requirement set. | Any technical choice that changes behavior, scope, cost, or risk returns to product design for a deliberate decision. | Technical work cannot silently enlarge the product. |
+| Technical possibilities repeatedly expand the requirement set. | Material product changes discovered in design or coding re-enter Grill Me, then re-walk approval → spec → plan before resuming. | Scope can expand when needed, then converge again on an approved boundary. |
 
 ---
 
@@ -134,10 +134,13 @@ flowchart LR
     P --> S{"Product spec approved?"}
     S -- "No" --> P
     S -- "Yes" --> T["2. Technical design"]
-    T --> C{"Changes product boundary?"}
-    C -- "Yes" --> P
+    T --> C{"Material product change?"}
+    C -- "Yes" --> R["Re-enter from Grill Me"]
+    R --> P
     C -- "No" --> D["3. Implementation"]
-    D --> V["Tests, review, verification"]
+    D --> M{"Material product change?"}
+    M -- "Yes" --> R
+    M -- "No" --> V["Tests, review, verification"]
     V --> A(["Product acceptance"])
 
     style I fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#000
@@ -145,12 +148,64 @@ flowchart LR
     style S fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#000
     style T fill:#EDE9FE,stroke:#8B5CF6,stroke-width:2px,color:#000
     style C fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#000
+    style R fill:#FFEDD5,stroke:#EA580C,stroke-width:2px,color:#000
     style D fill:#DCFCE7,stroke:#22C55E,stroke-width:2px,color:#000
+    style M fill:#FEE2E2,stroke:#EF4444,stroke-width:2px,color:#000
     style V fill:#F1F5F9,stroke:#64748B,stroke-width:2px,color:#000
     style A fill:#DCFCE7,stroke:#22C55E,stroke-width:2px,color:#000
 ```
 
-The user participates at the product-design and product-acceptance points. Technical design and implementation stay agent-owned. When a technical discovery would change the approved product boundary, the workflow pauses and returns the decision to the product manager.
+The user participates at the product-design and product-acceptance points. Technical design and implementation stay agent-owned. Product-boundary changes discovered later do not get absorbed into coding — they re-enter the product path (next section).
+
+---
+
+## 🔁 When requirements change mid-flight
+
+This is the mechanism that keeps scope convergent after the happy path has already left product design.
+
+During **technical design** or **implementation**, real work often reveals a product fact the original spec did not settle: a permission edge case, a cheaper behavior that alters the promise, two reasonable readings of the same acceptance criterion, or a “we should just drop that” trade-off driven by engineering cost.
+
+### What must not happen
+
+- Silently stretch the product while coding
+- Let the agent decide a product trade-off “to keep moving”
+- Jump from a mid-build insight straight back into half-finished implementation with a new unspoken scope
+
+### What GrillPowers does instead
+
+1. **Pause** the affected technical work (independent work may continue).
+2. **Return to Grill Me** — one product decision at a time, with a recommendation.
+3. **Walk the gates again, in order** — shared-understanding approval → `to-spec` → plan revision via `superpowers:writing-plans`.
+4. **Resume** only from the corrected contract: technical design / plan / delivery under the new approved product boundary.
+
+```text
+tech design or coding discovers a product change
+        │
+        ▼
+   pause affected work
+        │
+        ▼
+   Grill Me (product decisions)
+        │
+        ▼
+   recap approved → to-spec approved
+        │
+        ▼
+   revise plan → resume delivery
+```
+
+### Material vs stay-in-delivery
+
+| Signal | Action |
+|---|---|
+| Changes user-visible behavior, core flow, scope, acceptance criteria, business rules, permissions, privacy, billing, data meaning, or irreversible operations | **Material** — pause and re-enter from Grill Me through the full gate chain |
+| Spec admits two reasonable interpretations | **Material** — treat ambiguity as an open product decision |
+| Engineering wants to lower or replace a promised requirement because implementation is hard | **Material** — product decides; implementation does not redefine the promise |
+| File layout, interfaces, data structures, tests, mocks, pure bugfix with no behavior change | Stay in Superpowers delivery |
+| Clear, low-risk user-visible micro-tweak | May stay in delivery **only after explicit user confirmation**, recorded as a small spec revision |
+
+> 💡 **Why step-by-step re-entry matters**  
+> Returning to Grill Me alone is not enough. Skipping gates leaves the plan, tests, and code traced to a dead contract. Re-walking `grilling → approval → to-spec → writing-plans` is how the system expands when needed, then converges again — from simple idea, to full decisions, back to a single approved boundary.
 
 ---
 
@@ -270,7 +325,7 @@ You remain the product manager throughout the workflow. GrillPowers preserves yo
 2. **One product decision at a time.** Recommendations make each choice understandable and convergent.
 3. **The user stays in the product-manager role.** Architecture, data, interfaces, tests, and task planning belong to the agent.
 4. **Technical design follows the approved product.** It must trace back to product rules and acceptance criteria.
-5. **Product-impacting changes loop back.** Behavior, scope, cost, or risk changes require a deliberate product decision.
+5. **Product-impacting changes re-enter from Grill Me.** Pause, decide the product question, re-approve the spec, revise the plan, then resume — never absorb scope inside coding.
 6. **Implementation ends with evidence and acceptance.** Fresh checks support the technical result; the user accepts the product result.
 
 ---

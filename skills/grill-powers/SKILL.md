@@ -82,15 +82,19 @@ Before any completion claim, follow `superpowers:verification-before-completion`
 
 When work occurs on a development branch, follow `superpowers:finishing-a-development-branch` after verification.
 
-### 8. Route material changes back
+### 8. Route material changes back (full re-entry)
 
-Treat a change as material when it changes approved scope, observable behavior, acceptance criteria, domain rules, constraints, permissions, safety, security, or compliance. If implementation reveals such a change, pause affected work and return to:
+Treat a change as material when it changes approved scope, observable behavior, acceptance criteria, domain rules, constraints, permissions, safety, security, or compliance. Material changes can surface in **technical design** or **implementation**. If either stage reveals such a change, pause affected work and re-enter from the product path — do not absorb the change inside coding.
 
-`grilling → shared-understanding approval → to-spec → writing-plans`
+Walk the chain **in order** back to the stage you left:
+
+`grilling → shared-understanding approval → to-spec → writing-plans → resume technical design or delivery`
+
+Do not jump from a mid-build product insight straight back into half-finished implementation. The plan, tests, and code must re-trace to the newly approved specification.
 
 Use `superpowers:systematic-debugging` only to reproduce, inspect, and gather the technical facts needed to describe the decision. Do not make behavior-changing edits to affected work until the product decision is approved. Revise the affected plan before resuming delivery.
 
-A local implementation discovery may stay in delivery only when it preserves the complete approved contract, including scope, behavior, domain rules, constraints, and acceptance criteria. A proposed scope item stays outside the approved contract until the user accepts it for the current delivery. While the decision is pending, pause potentially affected work; independent work may continue. Acceptance triggers the full loop; deferral leaves current delivery on its approved path.
+A local implementation discovery may stay in delivery only when it preserves the complete approved contract, including scope, behavior, domain rules, constraints, and acceptance criteria. A clear, low-risk user-visible micro-tweak may stay in delivery only after explicit user confirmation and a recorded small specification revision. A proposed scope item stays outside the approved contract until the user accepts it for the current delivery. While the decision is pending, pause potentially affected work; independent work may continue. Acceptance triggers the full loop; deferral leaves current delivery on its approved path.
 
 ## Quick Reference
 
