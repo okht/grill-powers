@@ -1,44 +1,37 @@
 <div align="center">
 
-# 🔥 GrillPowers
+# GrillPowers
 
-### *"Clarify first. Build with discipline. Finish with evidence."*
+### Clarify the product. Build the plan. Ship with proof.
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-![Format: Markdown](https://img.shields.io/badge/format-Markdown-24292f)
+![Host: Codex](https://img.shields.io/badge/host-Codex-10a37f)
 ![Upstreams: commit pinned](https://img.shields.io/badge/upstreams-commit%20pinned-8250df)
 [![Author](https://img.shields.io/badge/Author-okht-181717?logo=github&logoColor=white)](https://github.com/okht)
-
-[![Codex](https://img.shields.io/badge/Codex-Skill-black)](https://github.com/okht/grill-powers)
-![Product: one decision at a time](https://img.shields.io/badge/product-one%20decision%20at%20a%20time-0969da)
-![Boundary: approved product spec](https://img.shields.io/badge/boundary-approved%20product%20spec-d73a49)
-![Implementation: evidence driven](https://img.shields.io/badge/implementation-evidence%20driven-1a7f37)
 
 <br>
 
 <table>
 <tr><td align="left">
 
-🔀 &nbsp;Product requirements and technical requirements get mixed into one conversation.<br>
-🧩 &nbsp;Non-technical users are pulled into implementation choices they cannot evaluate.<br>
-📈 &nbsp;Every technical branch can reopen scope, so requirements grow instead of converging.
+Product talk and tech talk land in the same thread.<br>
+People without an engineering background get pulled into design choices they cannot judge.<br>
+Each new tech option reopens scope. The list grows. It rarely shrinks.
 
 </td></tr>
 </table>
 
-### ✨ GrillPowers keeps you in the product-manager seat from idea to acceptance.
+<br>
+
+GrillPowers joins **[Grill Me](https://github.com/mattpocock/skills)** and **[Superpowers](https://github.com/obra/superpowers)**. It splits the work into three stages so you stay the product manager from idea to accept.
+
+```text
+Idea → product design → technical design → build → check → accept
+```
 
 <br>
 
-Combines the best of **Grill Me** and **Superpowers**, then hard-separates the stages so scope can expand, then actually converge.
-
-**Grill Me** clarifies product decisions one at a time · **Superpowers** delivers with plan, TDD, review, and fresh verification
-
-**Idea → product design → technical design → implementation → verification → product acceptance**
-
-<br>
-
-[🎯 Why](#-why-grillpowers-exists) · [🧩 Stages](#-three-stages-one-product-manager-role) · [🗺 Workflow](#-workflow) · [🔁 Re-entry](#-when-requirements-change-mid-flight) · [⚡ Install](#-install) · [🚀 Usage](#-usage) · [🎬 Example](#-example-saved-search-links)
+[Why](#why) · [Stages](#stages) · [Flow](#flow) · [When scope changes](#when-scope-changes) · [Install](#install) · [Use](#use) · [Example](#example)
 
 [**English**](README.md) · [**简体中文**](docs/lang/README_ZH.md)
 
@@ -46,102 +39,50 @@ Combines the best of **Grill Me** and **Superpowers**, then hard-separates the s
 
 ---
 
-<div align="center">
+## Why
 
-Built around [Matt Pocock's Skills](https://github.com/mattpocock/skills) · [Jesse Vincent's Superpowers](https://github.com/obra/superpowers) · Independent integration by [@okht](https://github.com/okht)
+Grill Me is good at product questions: one decision at a time, a clear pick, wait for your yes. Superpowers is good at delivery: plans, tests, debug, review, fresh checks.
 
-</div>
+Used alone on product work, Superpowers mixes “what should we build” with “how should we build it.” You answer architecture questions you did not mean to answer. Scope creeps.
 
----
+GrillPowers keeps both strengths and draws hard lines between stages.
 
-## 🎯 Why GrillPowers exists
-
-GrillPowers began with a practical goal: combine the most useful parts of Grill Me and Superpowers, then remove the interaction patterns that create role confusion or scope drift for a non-technical product manager.
-
-### 1️⃣ Two upstream strengths
-
-<table>
-<thead>
-<tr>
-<th width="50%" align="center">🔥 Grill Me</th>
-<th width="50%" align="center">⚡ Superpowers</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><sub>Product focus</sub></td>
-<td align="center"><sub>Engineering discipline</sub></td>
-</tr>
-<tr>
-<td><sub>Inspects existing facts, asks one meaningful product question at a time, recommends a direction, and waits for explicit confirmation.</sub></td>
-<td><sub>Planning, test-driven implementation, systematic debugging, review ownership, and fresh verification all make delivery more reliable.</sub></td>
-</tr>
-</tbody>
-</table>
-
-### 2️⃣ The failure mode it fixes
-
-Used directly in product-facing work, Superpowers often discusses product requirements and technical requirements in the same thread. A user without an engineering background can be pulled into architecture choices they cannot evaluate. Each new technical option can reopen the product boundary, making the requirement set larger and harder to converge.
-
-GrillPowers keeps the strengths of both systems and introduces three hard stage boundaries:
-
-| Pain | GrillPowers solution | Advantage |
-|---|---|---|
-| Product and technical questions are discussed together. | Finish and approve product design before technical design begins. | Scope converges around product value and acceptance criteria. |
-| The user is expected to answer implementation questions. | The agent owns architecture, data, interfaces, tests, and task planning. | The user only needs to act as the product manager. |
-| Technical possibilities repeatedly expand the requirement set. | Material product changes discovered in design or coding re-enter Grill Me, then re-walk approval → spec → plan before resuming. | Scope can expand when needed, then converge again on an approved boundary. |
+| Problem | What GrillPowers does |
+|---|---|
+| Product and tech questions share one chat | Finish and approve product design before technical design starts |
+| The user is asked how to implement | The agent owns architecture, data, interfaces, tests, and task plan |
+| Tech options keep growing the product | A real product change mid-build returns to Grill Me, then re-walks approve → spec → plan |
 
 ---
 
-## ✨ Three stages, one product-manager role
+## Stages
 
-<table>
-<thead>
-<tr>
-<th width="33%" align="center">1️⃣ Product design</th>
-<th width="33%" align="center">2️⃣ Technical design</th>
-<th width="33%" align="center">3️⃣ Implementation</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td align="center"><sub>User defines audience, value, scope, rules, acceptance</sub></td>
-<td align="center"><sub>User only decides product-impacting trade-offs</sub></td>
-<td align="center"><sub>User accepts or rejects the observable product</sub></td>
-</tr>
-<tr>
-<td><sub>Agent inspects facts, asks one product decision at a time, recommends a direction, and writes the product specification.</sub></td>
-<td><sub>Agent translates the approved product into architecture, data, interfaces, test strategy, and an implementation plan.</sub></td>
-<td><sub>Agent implements, tests, debugs, reviews, and runs fresh verification.</sub></td>
-</tr>
-<tr>
-<td align="center"><sub><b>Exit:</b> user approves the product specification</sub></td>
-<td align="center"><sub><b>Exit:</b> design covers every acceptance criterion without changing the product boundary</sub></td>
-<td align="center"><sub><b>Exit:</b> evidence supports the result; user completes product acceptance</sub></td>
-</tr>
-</tbody>
-</table>
+| | 1. Product design | 2. Technical design | 3. Build |
+|---|---|---|---|
+| **You** | Who it is for, value, scope, rules, done criteria | Only trade-offs that change product behavior, cost, risk, or scope | Accept or reject what you can see |
+| **Agent** | Check facts, ask one product decision at a time, recommend, write the product spec | Turn the approved product into architecture, data, interfaces, tests, and a build plan | Code, test, debug, review, run fresh checks |
+| **Done when** | You approve the product spec | The design meets every acceptance line and does not move the product boundary | Checks pass and you accept the product |
 
-The user only needs to be the product manager: decide what should exist, who it serves, where the boundary sits, and what counts as done. GrillPowers owns the technical path from the approved product design to verified implementation.
+You decide what exists, for whom, where the edge is, and what “done” means. The agent owns the path from approved product design to checked build.
 
 ---
 
-## 🗺 Workflow
+## Flow
 
 ```mermaid
 flowchart LR
-    I(["Idea or change"]) --> P["1. Product design"]
-    P --> S{"Product spec approved?"}
+    I(["Idea"]) --> P["1. Product design"]
+    P --> S{"Spec approved?"}
     S -- "No" --> P
     S -- "Yes" --> T["2. Technical design"]
-    T --> C{"Material product change?"}
-    C -- "Yes" --> R["Re-enter from Grill Me"]
+    T --> C{"Product change?"}
+    C -- "Yes" --> R["Back to Grill Me"]
     R --> P
-    C -- "No" --> D["3. Implementation"]
-    D --> M{"Material product change?"}
+    C -- "No" --> D["3. Build"]
+    D --> M{"Product change?"}
     M -- "Yes" --> R
-    M -- "No" --> V["Tests, review, verification"]
-    V --> A(["Product acceptance"])
+    M -- "No" --> V["Test, review, check"]
+    V --> A(["Accept"])
 
     style I fill:#FEF3C7,stroke:#F59E0B,stroke-width:2px,color:#000
     style P fill:#DBEAFE,stroke:#3B82F6,stroke-width:2px,color:#000
@@ -155,121 +96,111 @@ flowchart LR
     style A fill:#DCFCE7,stroke:#22C55E,stroke-width:2px,color:#000
 ```
 
-The user participates at the product-design and product-acceptance points. Technical design and implementation stay agent-owned. Product-boundary changes discovered later do not get absorbed into coding — they re-enter the product path (next section).
+You show up for product design and final accept. The agent runs technical design and build. If a later find moves the product boundary, work pauses and returns through the product path below.
 
 ---
 
-## 🔁 When requirements change mid-flight
+## When scope changes
 
-This is the mechanism that keeps scope convergent after the happy path has already left product design.
+Tech design or coding often surfaces a product fact the spec never settled: a permission edge, a cheaper path that changes the promise, two fair readings of one acceptance line, or a cut driven by cost.
 
-During **technical design** or **implementation**, real work often reveals a product fact the original spec did not settle: a permission edge case, a cheaper behavior that alters the promise, two reasonable readings of the same acceptance criterion, or a “we should just drop that” trade-off driven by engineering cost.
+Do not stretch the product while coding. Do not let the agent pick a product trade-off to “keep moving.” Do not jump from a mid-build insight into half-done code with new unspoken scope.
 
-### What must not happen
+Instead:
 
-- Silently stretch the product while coding
-- Let the agent decide a product trade-off “to keep moving”
-- Jump from a mid-build insight straight back into half-finished implementation with a new unspoken scope
-
-### What GrillPowers does instead
-
-1. **Pause** the affected technical work (independent work may continue).
-2. **Return to Grill Me** — one product decision at a time, with a recommendation.
-3. **Walk the gates again, in order** — shared-understanding approval → `to-spec` → plan revision via `superpowers:writing-plans`.
-4. **Resume** only from the corrected contract: technical design / plan / delivery under the new approved product boundary.
+1. Pause the work that depends on the open product question. Other work can continue.
+2. Return to Grill Me. One product decision at a time. Get a recommendation.
+3. Re-walk the gates in order: shared understanding approved → `to-spec` approved → plan updated with `superpowers:writing-plans`.
+4. Resume only under the new approved product boundary.
 
 ```text
-tech design or coding discovers a product change
+product change found in design or code
         │
         ▼
    pause affected work
         │
         ▼
-   Grill Me (product decisions)
+   Grill Me
         │
         ▼
    recap approved → to-spec approved
         │
         ▼
-   revise plan → resume delivery
+   revise plan → resume build
 ```
-
-### Material vs stay-in-delivery
 
 | Signal | Action |
 |---|---|
-| Changes user-visible behavior, core flow, scope, acceptance criteria, business rules, permissions, privacy, billing, data meaning, or irreversible operations | **Material** — pause and re-enter from Grill Me through the full gate chain |
-| Spec admits two reasonable interpretations | **Material** — treat ambiguity as an open product decision |
-| Engineering wants to lower or replace a promised requirement because implementation is hard | **Material** — product decides; implementation does not redefine the promise |
-| File layout, interfaces, data structures, tests, mocks, pure bugfix with no behavior change | Stay in Superpowers delivery |
-| Clear, low-risk user-visible micro-tweak | May stay in delivery **only after explicit user confirmation**, recorded as a small spec revision |
+| Changes user-visible behavior, core flow, scope, acceptance, business rules, permissions, privacy, billing, data meaning, or irreversible ops | Pause. Full re-entry from Grill Me |
+| Spec has two fair readings | Treat as an open product decision |
+| Build wants to drop or swap a promised requirement because it is hard | Product decides. Build does not rewrite the promise |
+| File layout, interfaces, data shapes, tests, mocks, bug fix with no behavior change | Stay in Superpowers |
+| Clear, low-risk user-visible micro-change | Stay in delivery only after you confirm. Record a small spec revision |
 
-> 💡 **Why step-by-step re-entry matters**  
-> Returning to Grill Me alone is not enough. Skipping gates leaves the plan, tests, and code traced to a dead contract. Re-walking `grilling → approval → to-spec → writing-plans` is how the system expands when needed, then converges again — from simple idea, to full decisions, back to a single approved boundary.
+A trip back to Grill Me is not enough on its own. Skip a gate and the plan, tests, and code still point at a dead contract. Walk `grilling → approve → to-spec → writing-plans` so scope can open when it must, then close on one approved edge.
 
 ---
 
-## 📦 What GrillPowers manages
+## What you get
 
-### Installed components
+**Installed**
 
-- One original orchestration skill: `skills/grill-powers`
+- Orchestration skill: `skills/grill-powers`
 - Matt Pocock Skills pinned to `9603c1cc8118d08bc1b3bf34cf714f62178dea3b`
 - Superpowers v6.1.1 pinned to `d884ae04edebef577e82ff7c4e143debd0bbec99`
-- One user-facing GrillPowers entrypoint over a curated set of pinned upstream methods
+- One entrypoint over a fixed set of upstream skills
 
-### Working artifacts
+**In your project**
 
-| Artifact | Role |
+| File / result | Role |
 |---|---|
-| ✅ Approved product specification | Testable acceptance criteria |
-| 🧭 Technical design & implementation plan | Agent-owned, traced back to the product specification |
-| 💻 Code and tests | Produced by one delivery owner |
-| 🧪 Review + verification + acceptance | Fresh evidence and product sign-off |
+| Approved product spec | Acceptance lines you can test |
+| Tech design and build plan | Owned by the agent; traces to the product spec |
+| Code and tests | One delivery owner |
+| Review, checks, accept | Fresh evidence; you sign off the product |
 
-GrillPowers keeps these artifacts in the user's project. This repository contains the workflow definition, installation metadata, and fictional examples only.
+This repo holds the workflow, install metadata, and made-up examples. Your real artifacts live in your project.
 
 ---
 
-## ⚡ Install
+## Install
 
-You already have an agent — let it install itself. Paste this into Codex (or any host that can fetch skills):
+Paste this into your agent (Codex or any host that can fetch skills):
 
-> Install the GrillPowers skill for me: `https://github.com/okht/grill-powers`
+> Install GrillPowers for me: `https://github.com/okht/grill-powers`
 
-The agent should clone the repo, place `skills/grill-powers` where your host discovers skills, and (when appropriate) run the managed installer so the pinned Grill Me + Superpowers upstreams are available. When it finishes, start with `$grill-powers`.
+The agent clones the repo, puts `skills/grill-powers` where the host loads skills, and runs the install script when it needs the pinned Grill Me and Superpowers trees. Then start with `$grill-powers`.
 
 <details>
-<summary><b>🛠️ Prefer scripts or manual install? Click here</b></summary>
+<summary><b>Scripts and manual install</b></summary>
 
 <br>
 
-**Requirements:** Windows PowerShell 5.1+, Git, Codex skill discovery via a local skills directory.
+Needs Windows PowerShell 5.1+, Git, and a local skills directory for Codex.
 
-| Mode | Best for | What happens |
+| Mode | Use when | Does |
 |---|---|---|
-| **Managed isolated install** | Clean, reproducible setup | Fetches both upstreams at locked commits, installs the GrillPowers bridge, exposes only the selected skills. |
-| **Manual integration** | Machine that already manages Matt Pocock Skills or Superpowers | Keep existing upstream dirs, add `skills/grill-powers`, mirror `config/skill-selection.json`. |
+| Managed install | Clean machine | Fetches both upstreams at locked commits, installs the bridge, exposes the selected skills |
+| Manual | You already manage Matt or Superpowers | Keep those trees, add `skills/grill-powers`, match `config/skill-selection.json` |
 
 ```powershell
-# Dry-run first, then install + verify
 Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\install.ps1 -WhatIf
 .\scripts\install.ps1
 .\scripts\verify.ps1
 ```
 
-Scripts accept `-InstallRoot` / `-DiscoveryRoot`. Use `-MattSourceRoot` / `-SuperpowersSourceRoot` when clean local checkouts already sit on the locked commits. The managed installer preflights, refuses to clobber an existing target, and never silently replaces an install.
+Scripts take `-InstallRoot` and `-DiscoveryRoot`. Use `-MattSourceRoot` and `-SuperpowersSourceRoot` if you already have clean checkouts on the locked commits. The installer checks first, stops if the target exists, and does not overwrite an install in silence.
 
-**Manual integration** when both upstreams are already versioned elsewhere:
+**Manual steps** when both upstreams already live elsewhere:
 
 1. Copy `skills/grill-powers` into the host skill directory.
-2. Keep upstream namespaces and full skill trees intact.
-3. Expose entries in `config/skill-selection.json`.
+2. Keep upstream names and full skill trees.
+3. Expose the entries in `config/skill-selection.json`.
 4. Confirm `to-spec` hands off to `superpowers:writing-plans`.
-5. Run the host skill validator.
+5. Run the host skill check.
 
-**Maintainer regression** (two clean locked checkouts):
+**Maintainer test** (two clean locked checkouts):
 
 ```powershell
 .\scripts\test-install.ps1 `
@@ -281,66 +212,62 @@ Scripts accept `-InstallRoot` / `-DiscoveryRoot`. Use `-MattSourceRoot` / `-Supe
 
 ---
 
-## 🚀 Usage
+## Use
 
-Start with a real product idea, request, or change:
+Give it a real product idea:
 
 ```text
-Use $grill-powers to take saved-search sharing from an unresolved idea through verified delivery.
+Use $grill-powers to take saved-search sharing from an open idea through checked delivery.
 ```
 
-### Interaction contract
+1. State the goal in product words.
+2. GrillPowers checks known facts and asks one product decision at a time, with a recommendation.
+3. You approve the product design and its acceptance lines.
+4. GrillPowers writes the technical design and build plan. It brings back only choices that change product behavior, scope, cost, or risk.
+5. It codes, tests, debugs, reviews, and checks.
+6. You review what you can see and accept or reject.
 
-1. Describe the product goal in product language.
-2. GrillPowers inspects available facts and asks one product decision at a time, with a recommendation.
-3. Approve the product design and its acceptance criteria.
-4. GrillPowers completes the technical design and implementation plan. It returns only choices that change product behavior, scope, cost, or risk.
-5. GrillPowers implements, tests, debugs, reviews, and verifies the result.
-6. Review the observable product and complete product acceptance.
+Your product decisions stay the contract for all technical work.
 
-You remain the product manager throughout the workflow. GrillPowers preserves your product decisions as the contract for all technical work.
+**Rules the agent follows**
 
-### 🛡 Operating principles
-
-1. **Product design comes first.** Technical possibilities cannot define the product boundary by accident.
-2. **One product decision at a time.** Recommendations make each choice understandable and convergent.
-3. **The user stays in the product-manager role.** Architecture, data, interfaces, tests, and task planning belong to the agent.
-4. **Technical design follows the approved product.** It must trace back to product rules and acceptance criteria.
-5. **Product-impacting changes re-enter from Grill Me.** Pause, decide the product question, re-approve the spec, revise the plan, then resume — never absorb scope inside coding.
-6. **Implementation ends with evidence and acceptance.** Fresh checks support the technical result; the user accepts the product result.
+1. Product design first. Tech options do not set the product edge by accident.
+2. One product decision at a time.
+3. You stay product manager. The agent owns architecture, data, interfaces, tests, and task plan.
+4. Technical design traces to the approved product rules and acceptance lines.
+5. Product-impacting change: pause, Grill Me, re-approve spec, revise plan, then resume. Never swallow scope inside code.
+6. Build ends with fresh checks and your accept.
 
 ---
 
-## 🎬 Example: Saved Search Links
+## Example
 
-The initial request is deliberately incomplete:
+Starter request (left incomplete on purpose):
 
 > Let users share a saved search. We need it quickly.
 
-During product design, GrillPowers resolves the choices that change the product:
+Product design settles the choices that change the product:
 
 - Who may create and open a link?
-- Does access require an account?
+- Does access need an account?
 - Can the owner revoke it?
 - Does it expire?
-- What should an invalid or unauthorized visitor see?
+- What does an invalid or blocked visitor see?
 
-After the user approves those answers, GrillPowers freezes the product boundary. During technical design, the agent chooses the data model, interfaces, permission checks, test strategy, and implementation plan. It asks the user only when a technical constraint changes the product experience, cost, risk, or scope. During implementation, the agent builds and verifies the feature; the user reviews the resulting product behavior.
+After you approve, the product edge freezes. The agent picks data model, interfaces, permission checks, test plan, and build plan. It asks you only when a tech limit would change the product, cost, risk, or scope. Then it builds and checks. You review the result.
 
-### Artifact chain
+| Step | File |
+|------|------|
+| 1 | [Initial request](examples/INPUT.md) |
+| 2 | [Approved spec](examples/SPEC.md) |
+| 3 | [Build plan](examples/IMPLEMENTATION-PLAN.md) |
+| 4 | [Check record](examples/VERIFICATION.md) |
 
-| Step | Artifact |
-|------|----------|
-| 1️⃣ | [Initial request](examples/INPUT.md) |
-| 2️⃣ | [Approved specification](examples/SPEC.md) |
-| 3️⃣ | [Implementation plan](examples/IMPLEMENTATION-PLAN.md) |
-| 4️⃣ | [Verification record](examples/VERIFICATION.md) |
-
-> ⚠️ **About this example** — the chain is fictional and deliberately incomplete as a product brief. It shows how artifacts look *structurally* across stages, not a production-ready feature design.
+These files are fiction. They show the shape of each stage. They are not a real feature design.
 
 ---
 
-## 📂 Project structure
+## Layout
 
 ```text
 grill-powers/
@@ -350,57 +277,43 @@ grill-powers/
 ├── config/
 │   ├── sources.lock.json          # pinned upstream commits
 │   └── skill-selection.json       # discovery surface
-├── docs/
-│   └── lang/
-│       └── README_ZH.md           # Chinese README
+├── docs/lang/README_ZH.md
 ├── examples/
 │   ├── INPUT.md
 │   ├── SPEC.md
 │   ├── IMPLEMENTATION-PLAN.md
 │   └── VERIFICATION.md
 ├── LICENSES/
-│   ├── mattpocock-skills-MIT.txt
-│   └── superpowers-MIT.txt
 ├── scripts/
 │   ├── install.ps1
 │   ├── verify.ps1
 │   └── test-install.ps1
-└── skills/
-    └── grill-powers/
-        ├── SKILL.md               # orchestration entrypoint
-        ├── LICENSE
-        ├── THIRD_PARTY_NOTICES.md
-        ├── LICENSES/
-        ├── agents/
-        │   └── openai.yaml
-        └── references/
-            └── handoff-contract.md
+└── skills/grill-powers/
+    ├── SKILL.md
+    ├── agents/openai.yaml
+    └── references/handoff-contract.md
 ```
 
 ---
 
-## 📌 Notes
+## Notes
 
-- v1 ships a tested Windows PowerShell installer. Manual integration remains available for other hosts.
-- Source commits and the selected discovery surface are data files under `config/`, so upgrades are explicit and reviewable.
-- The upstream projects remain in their own namespaces and retain their complete directory structure.
-- The installer does not publish, push, delete an existing installation, or modify an unrelated repository.
+- v1 ships a Windows PowerShell installer. Manual install works for other hosts.
+- Locked commits and the skill list live under `config/`. Upgrades are explicit.
+- Upstream projects keep their own namespaces and full trees.
+- The installer does not publish, push, delete an existing install, or touch an unrelated repo.
 
 ---
 
-## 📄 Credits and license
+## Credits and license
 
-GrillPowers is an independent workflow integration built around [Matt Pocock's Skills](https://github.com/mattpocock/skills) and [Jesse Vincent's Superpowers](https://github.com/obra/superpowers). It is not affiliated with or endorsed by either upstream project.
+GrillPowers is an independent glue of [Matt Pocock's Skills](https://github.com/mattpocock/skills) and [Jesse Vincent's Superpowers](https://github.com/obra/superpowers). Neither project endorses this repo.
 
-Original GrillPowers content is available under the [MIT License](LICENSE). Upstream notices and exact license copies are in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [LICENSES](LICENSES).
+Original GrillPowers text is [MIT](LICENSE). Upstream notices: [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md) and [LICENSES](LICENSES).
 
 ---
 
 <div align="center">
-
-**Clarify the decision. Approve the specification. Finish with evidence.**
-
-<br>
 
 **MIT License** © [okht](https://github.com/okht)
 
