@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="docs/assets/title-wordmark.svg" alt="GrillPowers" height="80" />
+# <img src="docs/assets/logo.png" height="64" alt="" align="absmiddle" /> <span style="position:relative;top:6px">GrillPowers</span>
 
 ### *"Clarify the product. Approve the PRD. Ship with proof."*
 
