@@ -2,36 +2,42 @@
 
 # 🔥 GrillPowers
 
-### 先澄清产品，再写计划，用证据交付。
+### *「先澄清产品，再写计划，用证据交付。」*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](../../LICENSE)
-![Host: Codex](https://img.shields.io/badge/host-Codex-10a37f)
+[![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
 ![Upstreams: commit pinned](https://img.shields.io/badge/upstreams-commit%20pinned-8250df)
-[![Author](https://img.shields.io/badge/Author-okht-181717?logo=github&logoColor=white)](https://github.com/okht)
+
+[![Codex](https://img.shields.io/badge/Codex-Skill-black)](https://github.com/okht/grill-powers)
+![产品：一次一个决策](https://img.shields.io/badge/product-one%20decision%20at%20a%20time-0969da)
+![边界：批准产品规格](https://img.shields.io/badge/boundary-approved%20product%20spec-d73a49)
+![实施：证据驱动](https://img.shields.io/badge/implementation-evidence%20driven-1a7f37)
 
 <br>
 
 <table>
 <tr><td align="left">
 
-🔀 &nbsp;产品问题和技术问题挤在同一轮对话里。<br>
+🧑‍💼 &nbsp;产品问题和技术问题挤在同一轮对话里。<br>
 🧩 &nbsp;没有工程背景的人被拉去选实现方案，却没法判断。<br>
 📈 &nbsp;每个新技术选项都会重新打开范围。清单变长，很少变短。
 
 </td></tr>
 </table>
 
-<br>
-
-GrillPowers 接上 **[Grill Me](https://github.com/mattpocock/skills)** 和 **[Superpowers](https://github.com/obra/superpowers)**。它把工作拆成三个阶段，让你从想法到验收都只当产品经理。
-
-```text
-想法 → 产品设计 → 技术设计 → 施工 → 检查 → 验收
-```
+### ✨ GrillPowers 让你从想法到验收都只当产品经理。
 
 <br>
 
-[🎯 为什么](#-为什么) · [✨ 阶段](#-阶段) · [🗺 流程](#-流程) · [🔁 范围变了](#-范围变了) · [⚡ 安装](#-安装) · [🚀 使用](#-使用) · [🎬 示例](#-示例)
+接上 **[Grill Me](https://github.com/mattpocock/skills)** 和 **[Superpowers](https://github.com/obra/superpowers)**。工作拆成三个阶段。
+
+**Grill Me** — 一次一个产品决策 · **Superpowers** — 计划、TDD、评审、新检查
+
+**想法 → 产品设计 → 技术设计 → 施工 → 检查 → 验收**
+
+<br>
+
+[🎯 为什么](#-为什么) · [✨ 阶段](#-阶段) · [🗺 流程](#-流程) · [🔁 范围变了](#-范围变了) · [📦 你会得到什么](#-你会得到什么) · [⚡ 安装](#-安装) · [🚀 使用](#-使用) · [✨ 示例](#-示例)
 
 [**English**](../../README.md) · [**简体中文**](README_ZH.md)
 
@@ -39,9 +45,38 @@ GrillPowers 接上 **[Grill Me](https://github.com/mattpocock/skills)** 和 **[S
 
 ---
 
+<div align="center">
+
+基于 [Matt Pocock Skills](https://github.com/mattpocock/skills) · [Jesse Vincent Superpowers](https://github.com/obra/superpowers) · [@okht](https://github.com/okht)
+
+</div>
+
+---
+
 ## 🎯 为什么
 
-Grill Me 擅长产品问题：一次一个决策，给一个明确选项，等你点头。Superpowers 擅长交付：计划、测试、调试、评审、用新跑出来的检查收尾。
+### 1️⃣ 两个上游的强项
+
+<table>
+<thead>
+<tr>
+<th width="50%" align="center">🔥 Grill Me</th>
+<th width="50%" align="center">⚡ Superpowers</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><sub>产品问题</sub></td>
+<td align="center"><sub>交付</sub></td>
+</tr>
+<tr>
+<td><sub>一次一个决策，给明确选项，等你点头。</sub></td>
+<td><sub>计划、测试、调试、评审、新跑出来的检查。</sub></td>
+</tr>
+</tbody>
+</table>
+
+### 2️⃣ 混聊会搞砸产品工作
 
 单独拿 Superpowers 做产品工作时，它常把「做什么」和「怎么做」混在一起聊。你会答一堆本意不是产品决策的架构题。范围跟着涨。
 
@@ -49,7 +84,7 @@ GrillPowers 两边都留，并在阶段之间画硬线。
 
 | 问题 | GrillPowers 怎么做 |
 |---|---|
-| 🔀 产品和技问题同一聊天 | 产品设计批完，才进技术设计 |
+| 🧑‍💼 产品和技问题同一聊天 | 产品设计批完，才进技术设计 |
 | 🧩 用户被问怎么实现 | 架构、数据、接口、测试、任务规划归 agent |
 | 📈 技术选项不断把产品做大 | 施工中的实质产品变更退回 Grill Me，再按批准 → 规格 → 计划走回当前环节 |
 
@@ -57,11 +92,32 @@ GrillPowers 两边都留，并在阶段之间画硬线。
 
 ## ✨ 阶段
 
-| | 1️⃣ 产品设计 | 2️⃣ 技术设计 | 3️⃣ 施工 |
-|---|---|---|---|
-| **你** | 给谁、价值、范围、规则、怎样算完成 | 只处理会改产品行为、成本、风险或范围的取舍 | 接受或拒绝你看得到的结果 |
-| **Agent** | 查事实，一次问一个产品决策，给推荐，写产品规格 | 把已批准产品变成架构、数据、接口、测试和施工计划 | 编码、测试、调试、评审、跑新的检查 |
-| **结束条件** | 你批准产品规格 | 设计盖住每条验收，且不挪产品边界 | 检查通过，你验收产品 |
+<table>
+<thead>
+<tr>
+<th width="33%" align="center">1️⃣ 产品设计</th>
+<th width="33%" align="center">2️⃣ 技术设计</th>
+<th width="33%" align="center">3️⃣ 施工</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><sub>你定给谁、价值、范围、规则、怎样算完成</sub></td>
+<td align="center"><sub>你只处理会改产品行为、成本、风险或范围的取舍</sub></td>
+<td align="center"><sub>你接受或拒绝你看得到的结果</sub></td>
+</tr>
+<tr>
+<td><sub>Agent 查事实，一次问一个产品决策，给推荐，写产品规格。</sub></td>
+<td><sub>Agent 把已批准产品变成架构、数据、接口、测试和施工计划。</sub></td>
+<td><sub>Agent 编码、测试、调试、评审、跑新的检查。</sub></td>
+</tr>
+<tr>
+<td align="center"><sub><b>结束：</b>你批准产品规格</sub></td>
+<td align="center"><sub><b>结束：</b>设计盖住每条验收，且不挪产品边界</sub></td>
+<td align="center"><sub><b>结束：</b>检查通过；你验收产品</sub></td>
+</tr>
+</tbody>
+</table>
 
 你决定做什么、给谁做、边界在哪、怎样算完。Agent 负责从已批准的产品设计走到可检查的交付。
 
@@ -106,12 +162,12 @@ flowchart LR
 
 不要边写代码边偷偷做大产品。不要让 agent 为了「先往前」替你做产品取舍。不要施工中半截发现新需求，跳过门禁带着未声明范围继续干。
 
-正确顺序：
+### 1️⃣ 暂停 → Grill Me → 门禁 → 恢复
 
-1. ⏸ **暂停**依赖这个问题的技术工作。无关工作可继续。
-2. 🔥 **退回 Grill Me。** 一次一个产品决策。给推荐。
-3. 🚪 **按顺序重走门禁：** 共识批准 → `to-spec` 批准 → 用 `superpowers:writing-plans` 改计划。
-4. ▶ **只在新的已批准产品边界下恢复。**
+1. **暂停**依赖这个问题的技术工作。无关工作可继续。
+2. **退回 Grill Me。** 一次一个产品决策。给推荐。
+3. **按顺序重走门禁：** 共识批准 → `to-spec` 批准 → 用 `superpowers:writing-plans` 改计划。
+4. **只在新的已批准产品边界下恢复。**
 
 ```text
 设计或代码里发现产品变更
@@ -129,6 +185,8 @@ flowchart LR
    改计划 → 恢复施工
 ```
 
+### 2️⃣ 实质变更 vs 留在交付
+
 | 信号 | 动作 |
 |---|---|
 | 🔴 改用户可见行为、核心流程、范围、验收、业务规则、权限、隐私、计费、数据含义或不可逆操作 | 暂停。从 Grill Me 完整回走 |
@@ -145,12 +203,12 @@ flowchart LR
 
 ### 安装内容
 
-- 🧩 编排技能：`skills/grill-powers`
-- 📌 Matt Pocock Skills 钉在 `9603c1cc8118d08bc1b3bf34cf714f62178dea3b`
-- 📌 Superpowers v6.1.1 钉在 `d884ae04edebef577e82ff7c4e143debd0bbec99`
-- 🚪 一个入口，底下是固定好的上游技能集
+- 一个编排技能：`skills/grill-powers`
+- Matt Pocock Skills 钉在 `9603c1cc8118d08bc1b3bf34cf714f62178dea3b`
+- Superpowers v6.1.1 钉在 `d884ae04edebef577e82ff7c4e143debd0bbec99`
+- 一个入口，底下是固定好的上游技能集
 
-### 落在你项目里的产物
+### 工作产物
 
 | 产物 | 作用 |
 |---|---|
@@ -165,14 +223,14 @@ flowchart LR
 
 ## ⚡ 安装
 
-把这句话丢给 agent（Codex，或任何能拉 skill 的宿主）：
+你已经有 Agent 了——让它自己装。打开 Codex（或任何能拉 skill 的宿主），丢给它这一句：
 
-> 帮我安装 GrillPowers：`https://github.com/okht/grill-powers`
+> 帮我安装 GrillPowers skill：`https://github.com/okht/grill-powers`
 
 Agent 克隆仓库，把 `skills/grill-powers` 放到宿主能发现的 skills 目录，需要时再跑安装脚本，拉齐锁定版本的 Grill Me 和 Superpowers。装完用 `$grill-powers` 启动。
 
 <details>
-<summary><b>🛠️ 脚本与手动安装</b></summary>
+<summary><b>🛠️ 想自己装？点开看脚本和路径</b></summary>
 
 <br>
 
@@ -214,11 +272,13 @@ Set-ExecutionPolicy -Scope Process Bypass
 
 ## 🚀 使用
 
-给一个真实产品想法：
+从真实产品想法开始：
 
 ```text
 使用 $grill-powers，把「分享已保存搜索」从开放想法推进到有检查的交付。
 ```
+
+### 🎛️ 交互约定
 
 1. 用产品语言说目标。
 2. GrillPowers 查已知事实，一次问一个产品决策，并给推荐。
@@ -240,7 +300,7 @@ Set-ExecutionPolicy -Scope Process Bypass
 
 ---
 
-## 🎬 示例
+## ✨ 示例
 
 起始请求（故意不完整）：
 
@@ -256,18 +316,18 @@ Set-ExecutionPolicy -Scope Process Bypass
 
 你批准后，产品边界冻结。Agent 选数据模型、接口、权限检查、测试和施工计划。只有技术限制会改产品、成本、风险或范围时才再问你。然后施工并检查。你验收结果。
 
-| 步骤 | 文件 |
+| 步骤 | 产物 |
 |------|------|
 | 1️⃣ | [初始请求](../../examples/INPUT.md) |
 | 2️⃣ | [已批准规格](../../examples/SPEC.md) |
 | 3️⃣ | [施工计划](../../examples/IMPLEMENTATION-PLAN.md) |
 | 4️⃣ | [检查记录](../../examples/VERIFICATION.md) |
 
-这些文件是虚构的。只展示各阶段长什么样。不是真功能设计。
+> ⚠️ **关于本示例** — 这些文件是虚构的。只展示各阶段长什么样。不是真功能设计。
 
 ---
 
-## 📂 目录
+## 📂 Project Structure
 
 ```text
 grill-powers/
@@ -296,7 +356,7 @@ grill-powers/
 
 ---
 
-## 📌 说明
+## ⚠️ Notes
 
 - v1 带 Windows PowerShell 安装器。其他宿主可手动装。
 - 锁定提交和技能列表在 `config/`。升级要显式改。
@@ -305,7 +365,7 @@ grill-powers/
 
 ---
 
-## 📄 致谢与许可证
+## 📄 Credits and license
 
 GrillPowers 是 [Matt Pocock Skills](https://github.com/mattpocock/skills) 与 [Jesse Vincent Superpowers](https://github.com/obra/superpowers) 的独立拼接。两个上游项目与本仓库无隶属、无背书。
 
