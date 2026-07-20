@@ -1,6 +1,6 @@
 <div align="center">
 
-# GrillPowers
+# 🔥 GrillPowers
 
 ### Clarify the product. Build the plan. Ship with proof.
 
@@ -14,9 +14,9 @@
 <table>
 <tr><td align="left">
 
-Product talk and tech talk land in the same thread.<br>
-People without an engineering background get pulled into design choices they cannot judge.<br>
-Each new tech option reopens scope. The list grows. It rarely shrinks.
+🔀 &nbsp;Product talk and tech talk land in the same thread.<br>
+🧩 &nbsp;People without an engineering background get pulled into design choices they cannot judge.<br>
+📈 &nbsp;Each new tech option reopens scope. The list grows. It rarely shrinks.
 
 </td></tr>
 </table>
@@ -31,7 +31,7 @@ Idea → product design → technical design → build → check → accept
 
 <br>
 
-[Why](#why) · [Stages](#stages) · [Flow](#flow) · [When scope changes](#when-scope-changes) · [Install](#install) · [Use](#use) · [Example](#example)
+[🎯 Why](#-why) · [✨ Stages](#-stages) · [🗺 Flow](#-flow) · [🔁 When scope changes](#-when-scope-changes) · [⚡ Install](#-install) · [🚀 Use](#-use) · [🎬 Example](#-example)
 
 [**English**](README.md) · [**简体中文**](docs/lang/README_ZH.md)
 
@@ -39,7 +39,7 @@ Idea → product design → technical design → build → check → accept
 
 ---
 
-## Why
+## 🎯 Why
 
 Grill Me is good at product questions: one decision at a time, a clear pick, wait for your yes. Superpowers is good at delivery: plans, tests, debug, review, fresh checks.
 
@@ -49,15 +49,15 @@ GrillPowers keeps both strengths and draws hard lines between stages.
 
 | Problem | What GrillPowers does |
 |---|---|
-| Product and tech questions share one chat | Finish and approve product design before technical design starts |
-| The user is asked how to implement | The agent owns architecture, data, interfaces, tests, and task plan |
-| Tech options keep growing the product | A real product change mid-build returns to Grill Me, then re-walks approve → spec → plan |
+| 🔀 Product and tech questions share one chat | Finish and approve product design before technical design starts |
+| 🧩 The user is asked how to implement | The agent owns architecture, data, interfaces, tests, and task plan |
+| 📈 Tech options keep growing the product | A real product change mid-build returns to Grill Me, then re-walks approve → spec → plan |
 
 ---
 
-## Stages
+## ✨ Stages
 
-| | 1. Product design | 2. Technical design | 3. Build |
+| | 1️⃣ Product design | 2️⃣ Technical design | 3️⃣ Build |
 |---|---|---|---|
 | **You** | Who it is for, value, scope, rules, done criteria | Only trade-offs that change product behavior, cost, risk, or scope | Accept or reject what you can see |
 | **Agent** | Check facts, ask one product decision at a time, recommend, write the product spec | Turn the approved product into architecture, data, interfaces, tests, and a build plan | Code, test, debug, review, run fresh checks |
@@ -67,7 +67,7 @@ You decide what exists, for whom, where the edge is, and what “done” means. 
 
 ---
 
-## Flow
+## 🗺 Flow
 
 ```mermaid
 flowchart LR
@@ -100,7 +100,7 @@ You show up for product design and final accept. The agent runs technical design
 
 ---
 
-## When scope changes
+## 🔁 When scope changes
 
 Tech design or coding often surfaces a product fact the spec never settled: a permission edge, a cheaper path that changes the promise, two fair readings of one acceptance line, or a cut driven by cost.
 
@@ -108,10 +108,10 @@ Do not stretch the product while coding. Do not let the agent pick a product tra
 
 Instead:
 
-1. Pause the work that depends on the open product question. Other work can continue.
-2. Return to Grill Me. One product decision at a time. Get a recommendation.
-3. Re-walk the gates in order: shared understanding approved → `to-spec` approved → plan updated with `superpowers:writing-plans`.
-4. Resume only under the new approved product boundary.
+1. ⏸ **Pause** the work that depends on the open product question. Other work can continue.
+2. 🔥 **Return to Grill Me.** One product decision at a time. Get a recommendation.
+3. 🚪 **Re-walk the gates in order:** shared understanding approved → `to-spec` approved → plan updated with `superpowers:writing-plans`.
+4. ▶ **Resume** only under the new approved product boundary.
 
 ```text
 product change found in design or code
@@ -131,39 +131,39 @@ product change found in design or code
 
 | Signal | Action |
 |---|---|
-| Changes user-visible behavior, core flow, scope, acceptance, business rules, permissions, privacy, billing, data meaning, or irreversible ops | Pause. Full re-entry from Grill Me |
-| Spec has two fair readings | Treat as an open product decision |
-| Build wants to drop or swap a promised requirement because it is hard | Product decides. Build does not rewrite the promise |
-| File layout, interfaces, data shapes, tests, mocks, bug fix with no behavior change | Stay in Superpowers |
-| Clear, low-risk user-visible micro-change | Stay in delivery only after you confirm. Record a small spec revision |
+| 🔴 Changes user-visible behavior, core flow, scope, acceptance, business rules, permissions, privacy, billing, data meaning, or irreversible ops | Pause. Full re-entry from Grill Me |
+| 🔴 Spec has two fair readings | Treat as an open product decision |
+| 🔴 Build wants to drop or swap a promised requirement because it is hard | Product decides. Build does not rewrite the promise |
+| 🟢 File layout, interfaces, data shapes, tests, mocks, bug fix with no behavior change | Stay in Superpowers |
+| 🟡 Clear, low-risk user-visible micro-change | Stay in delivery only after you confirm. Record a small spec revision |
 
 A trip back to Grill Me is not enough on its own. Skip a gate and the plan, tests, and code still point at a dead contract. Walk `grilling → approve → to-spec → writing-plans` so scope can open when it must, then close on one approved edge.
 
 ---
 
-## What you get
+## 📦 What you get
 
-**Installed**
+### Installed
 
-- Orchestration skill: `skills/grill-powers`
-- Matt Pocock Skills pinned to `9603c1cc8118d08bc1b3bf34cf714f62178dea3b`
-- Superpowers v6.1.1 pinned to `d884ae04edebef577e82ff7c4e143debd0bbec99`
-- One entrypoint over a fixed set of upstream skills
+- 🧩 Orchestration skill: `skills/grill-powers`
+- 📌 Matt Pocock Skills pinned to `9603c1cc8118d08bc1b3bf34cf714f62178dea3b`
+- 📌 Superpowers v6.1.1 pinned to `d884ae04edebef577e82ff7c4e143debd0bbec99`
+- 🚪 One entrypoint over a fixed set of upstream skills
 
-**In your project**
+### In your project
 
 | File / result | Role |
 |---|---|
-| Approved product spec | Acceptance lines you can test |
-| Tech design and build plan | Owned by the agent; traces to the product spec |
-| Code and tests | One delivery owner |
-| Review, checks, accept | Fresh evidence; you sign off the product |
+| ✅ Approved product spec | Acceptance lines you can test |
+| 🧭 Tech design and build plan | Owned by the agent; traces to the product spec |
+| 💻 Code and tests | One delivery owner |
+| 🧪 Review, checks, accept | Fresh evidence; you sign off the product |
 
 This repo holds the workflow, install metadata, and made-up examples. Your real artifacts live in your project.
 
 ---
 
-## Install
+## ⚡ Install
 
 Paste this into your agent (Codex or any host that can fetch skills):
 
@@ -172,7 +172,7 @@ Paste this into your agent (Codex or any host that can fetch skills):
 The agent clones the repo, puts `skills/grill-powers` where the host loads skills, and runs the install script when it needs the pinned Grill Me and Superpowers trees. Then start with `$grill-powers`.
 
 <details>
-<summary><b>Scripts and manual install</b></summary>
+<summary><b>🛠️ Scripts and manual install</b></summary>
 
 <br>
 
@@ -212,7 +212,7 @@ Scripts take `-InstallRoot` and `-DiscoveryRoot`. Use `-MattSourceRoot` and `-Su
 
 ---
 
-## Use
+## 🚀 Use
 
 Give it a real product idea:
 
@@ -229,18 +229,18 @@ Use $grill-powers to take saved-search sharing from an open idea through checked
 
 Your product decisions stay the contract for all technical work.
 
-**Rules the agent follows**
+### 🛡 Rules the agent follows
 
-1. Product design first. Tech options do not set the product edge by accident.
-2. One product decision at a time.
-3. You stay product manager. The agent owns architecture, data, interfaces, tests, and task plan.
-4. Technical design traces to the approved product rules and acceptance lines.
-5. Product-impacting change: pause, Grill Me, re-approve spec, revise plan, then resume. Never swallow scope inside code.
-6. Build ends with fresh checks and your accept.
+1. **Product design first.** Tech options do not set the product edge by accident.
+2. **One product decision at a time.**
+3. **You stay product manager.** The agent owns architecture, data, interfaces, tests, and task plan.
+4. **Technical design traces** to the approved product rules and acceptance lines.
+5. **Product-impacting change:** pause, Grill Me, re-approve spec, revise plan, then resume. Never swallow scope inside code.
+6. **Build ends** with fresh checks and your accept.
 
 ---
 
-## Example
+## 🎬 Example
 
 Starter request (left incomplete on purpose):
 
@@ -258,16 +258,16 @@ After you approve, the product edge freezes. The agent picks data model, interfa
 
 | Step | File |
 |------|------|
-| 1 | [Initial request](examples/INPUT.md) |
-| 2 | [Approved spec](examples/SPEC.md) |
-| 3 | [Build plan](examples/IMPLEMENTATION-PLAN.md) |
-| 4 | [Check record](examples/VERIFICATION.md) |
+| 1️⃣ | [Initial request](examples/INPUT.md) |
+| 2️⃣ | [Approved spec](examples/SPEC.md) |
+| 3️⃣ | [Build plan](examples/IMPLEMENTATION-PLAN.md) |
+| 4️⃣ | [Check record](examples/VERIFICATION.md) |
 
 These files are fiction. They show the shape of each stage. They are not a real feature design.
 
 ---
 
-## Layout
+## 📂 Layout
 
 ```text
 grill-powers/
@@ -296,7 +296,7 @@ grill-powers/
 
 ---
 
-## Notes
+## 📌 Notes
 
 - v1 ships a Windows PowerShell installer. Manual install works for other hosts.
 - Locked commits and the skill list live under `config/`. Upgrades are explicit.
@@ -305,7 +305,7 @@ grill-powers/
 
 ---
 
-## Credits and license
+## 📄 Credits and license
 
 GrillPowers is an independent glue of [Matt Pocock's Skills](https://github.com/mattpocock/skills) and [Jesse Vincent's Superpowers](https://github.com/obra/superpowers). Neither project endorses this repo.
 
