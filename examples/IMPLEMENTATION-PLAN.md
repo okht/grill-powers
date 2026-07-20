@@ -1,6 +1,6 @@
-# Saved Search Links - example implementation plan
+# Saved Search Links - agent-authored implementation plan
 
-> Fictional plan. Paths and commands illustrate traceability; they do not describe this repository.
+> Fictional plan. The agent creates this after PRD approval without asking the product owner to choose or approve technical details. Paths and commands illustrate traceability; they do not describe this repository.
 
 ## Task 1: Persist the active token
 
@@ -29,5 +29,5 @@
 
 - Acceptance criteria: all
 - Run the focused suite, full suite, formatting checks, and static analysis.
-- Complete the reviews owned by the selected executor.
+- Complete the reviews owned by the agent-selected delivery owner.
 - Record fresh commands, exit status, and observable behavior in `VERIFICATION.md`.

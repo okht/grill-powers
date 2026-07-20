@@ -2,7 +2,7 @@
 
 # 🔥 GrillPowers
 
-### *"Clarify the product. Build the plan. Ship with proof."*
+### *"Clarify the product. Approve the PRD. Ship with proof."*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![AgentSkills](https://img.shields.io/badge/AgentSkills-Standard-green)](https://agentskills.io)
@@ -10,7 +10,7 @@
 
 [![Codex](https://img.shields.io/badge/Codex-Skill-black)](https://github.com/okht/grill-powers)
 ![Product: one decision at a time](https://img.shields.io/badge/product-one%20decision%20at%20a%20time-0969da)
-![Boundary: approved product spec](https://img.shields.io/badge/boundary-approved%20product%20spec-d73a49)
+![Boundary: approved product-only PRD](https://img.shields.io/badge/boundary-product--only%20PRD-d73a49)
 ![Implementation: evidence driven](https://img.shields.io/badge/implementation-evidence%20driven-1a7f37)
 
 <br>
@@ -86,7 +86,7 @@ GrillPowers keeps both strengths and draws hard lines between stages.
 |---|---|
 | 🧑‍💼 Product and tech questions share one chat | Finish and approve product design before technical design starts |
 | 🧩 The user is asked how to implement | The agent owns architecture, data, interfaces, tests, and task plan |
-| 📈 Tech options keep growing the product | A real product change mid-build returns to Grill Me, then re-walks approve → spec → plan |
+| 📈 Tech options keep growing the product | A real product change mid-build returns to Grill Me, then re-walks approve → PRD → plan |
 
 ---
 
@@ -107,19 +107,30 @@ GrillPowers keeps both strengths and draws hard lines between stages.
 <td align="center"><sub>You accept or reject what you can see</sub></td>
 </tr>
 <tr>
-<td><sub>Agent checks facts, asks one product decision at a time, recommends, writes the product spec.</sub></td>
+<td><sub>Agent checks facts, asks one product decision at a time, recommends, writes a product-only PRD.</sub></td>
 <td><sub>Agent turns the approved product into architecture, data, interfaces, tests, and a build plan.</sub></td>
 <td><sub>Agent codes, tests, debugs, reviews, runs fresh checks.</sub></td>
 </tr>
 <tr>
-<td align="center"><sub><b>Done:</b> you approve the product spec</sub></td>
+<td align="center"><sub><b>Done:</b> you approve the product-only PRD</sub></td>
 <td align="center"><sub><b>Done:</b> design meets every acceptance line without moving the product boundary</sub></td>
 <td align="center"><sub><b>Done:</b> checks pass; you accept the product</sub></td>
 </tr>
 </tbody>
 </table>
 
-You decide what exists, for whom, where the edge is, and what “done” means. The agent owns the path from approved product design to checked build.
+You decide what exists, for whom, where the edge is, and what “done” means. The approved PRD contains product intent and observable behavior only. The agent owns every technical choice from that boundary through checked delivery.
+
+### The PRD boundary
+
+| Product-only PRD | Agent-owned technical plan |
+|---|---|
+| Users, problem, outcome, scope, flows | Architecture, stack, modules, files |
+| Product rules and user-visible states | Data model, APIs, interfaces, algorithms |
+| Observable acceptance criteria | Tests, work breakdown, commands, deployment |
+| Open and deferred product decisions | Delivery owner and implementation sequence |
+
+Known repository details do not enter the PRD automatically. If a technical limit changes product behavior, scope, cost, or risk, GrillPowers asks for the resulting product decision and leaves the mechanism to the agent.
 
 ---
 
@@ -128,7 +139,7 @@ You decide what exists, for whom, where the edge is, and what “done” means. 
 ```mermaid
 flowchart LR
     I(["Idea"]) --> P["1. Product design"]
-    P --> S{"Spec approved?"}
+    P --> S{"Product PRD approved?"}
     S -- "No" --> P
     S -- "Yes" --> T["2. Technical design"]
     T --> C{"Product change?"}
@@ -152,7 +163,7 @@ flowchart LR
     style A fill:#DCFCE7,stroke:#22C55E,stroke-width:2px,color:#000
 ```
 
-You show up for product design and final accept. The agent runs technical design and build. If a later find moves the product boundary, work pauses and returns through the product path below.
+You show up for product design, PRD approval, and final acceptance. The agent runs technical design and build without asking you to approve architecture, the plan, or the delivery owner. If a later find moves the product boundary, work pauses and returns through the product path below.
 
 ---
 
@@ -166,7 +177,7 @@ Do not stretch the product while coding. Do not let the agent pick a product tra
 
 1. **Pause** the work that depends on the open product question. Other work can continue.
 2. **Return to Grill Me.** One product decision at a time. Get a recommendation.
-3. **Re-walk the gates in order:** shared understanding approved → `to-spec` approved → plan updated with `superpowers:writing-plans`.
+3. **Re-walk the gates in order:** shared understanding approved → update affected PRD sections and any consistency-dependent sections → publish and approve the complete revised PRD → plan updated with `superpowers:writing-plans`.
 4. **Resume** only under the new approved product boundary.
 
 ```text
@@ -179,7 +190,10 @@ product change found in design or code
    Grill Me
         │
         ▼
-   recap approved → to-spec approved
+   recap approved → update affected PRD sections
+        │
+        ▼
+       approve complete PRD revision
         │
         ▼
    revise plan → resume build
@@ -190,12 +204,12 @@ product change found in design or code
 | Signal | Action |
 |---|---|
 | 🔴 Changes user-visible behavior, core flow, scope, acceptance, business rules, permissions, privacy, billing, data meaning, or irreversible ops | Pause. Full re-entry from Grill Me |
-| 🔴 Spec has two fair readings | Treat as an open product decision |
+| 🔴 PRD has two fair readings | Treat as an open product decision |
 | 🔴 Build wants to drop or swap a promised requirement because it is hard | Product decides. Build does not rewrite the promise |
 | 🟢 File layout, interfaces, data shapes, tests, mocks, bug fix with no behavior change | Stay in Superpowers |
-| 🟡 Clear, low-risk user-visible micro-change | Stay in delivery only after you confirm. Record a small spec revision |
+| 🟡 Clear, low-risk user-visible micro-change | Stay in delivery only after you confirm. Record a small PRD revision |
 
-A trip back to Grill Me is not enough on its own. Skip a gate and the plan, tests, and code still point at a dead contract. Walk `grilling → approve → to-spec → writing-plans` so scope can open when it must, then close on one approved edge.
+A trip back to Grill Me is not enough on its own. Skip a gate and the plan, tests, and code still point at a dead contract. Walk `grilling → shared-understanding approval → product-only to-spec → exact PRD approval → writing-plans` so scope can open when it must, then close on one approved edge. Revise the affected content, publish the whole PRD as a new revision with a change summary, and approve that complete revision. A full rewrite is reserved for broad changes to the product premise, target users, or core flows.
 
 ---
 
@@ -212,8 +226,8 @@ A trip back to Grill Me is not enough on its own. Skip a gate and the plan, test
 
 | Artifact | Role |
 |---|---|
-| ✅ Approved product spec | Acceptance lines you can test |
-| 🧭 Tech design and build plan | Owned by the agent; traces to the product spec |
+| ✅ Approved product-only PRD | Product behavior and acceptance lines, with no technical design |
+| 🧭 Tech design and build plan | Owned by the agent; traces to the PRD |
 | 💻 Code and tests | One delivery owner |
 | 🧪 Review, checks, accept | Fresh evidence; you sign off the product |
 
@@ -255,7 +269,7 @@ Scripts take `-InstallRoot` and `-DiscoveryRoot`. Use `-MattSourceRoot` and `-Su
 1. Copy `skills/grill-powers` into the host skill directory.
 2. Keep upstream names and full skill trees.
 3. Expose the entries in `config/skill-selection.json`.
-4. Confirm `to-spec` hands off to `superpowers:writing-plans`.
+4. Confirm GrillPowers applies its product-only PRD contract before `to-spec` hands off to `superpowers:writing-plans`.
 5. Run the host skill check.
 
 **Maintainer test** (two clean locked checkouts):
@@ -282,10 +296,11 @@ Use $grill-powers to take saved-search sharing from an open idea through checked
 
 1. State the goal in product words.
 2. GrillPowers checks known facts and asks one product decision at a time, with a recommendation.
-3. You approve the product design and its acceptance lines.
-4. GrillPowers writes the technical design and build plan. It brings back only choices that change product behavior, scope, cost, or risk.
-5. It codes, tests, debugs, reviews, and checks.
-6. You review what you can see and accept or reject.
+3. You approve a product-only PRD and its acceptance lines.
+4. GrillPowers independently writes the technical design and build plan, then selects one delivery owner.
+5. It brings back only choices that change product behavior, scope, cost, or risk.
+6. It codes, tests, debugs, reviews, and checks.
+7. You review what you can see and accept or reject.
 
 Your product decisions stay the contract for all technical work.
 
@@ -293,10 +308,11 @@ Your product decisions stay the contract for all technical work.
 
 1. **Product design first.** Tech options do not set the product edge by accident.
 2. **One product decision at a time.**
-3. **You stay product manager.** The agent owns architecture, data, interfaces, tests, and task plan.
-4. **Technical design traces** to the approved product rules and acceptance lines.
-5. **Product-impacting change:** pause, Grill Me, re-approve spec, revise plan, then resume. Never swallow scope inside code.
-6. **Build ends** with fresh checks and your accept.
+3. **The PRD stays product-only.** It contains no architecture, data model, API, test strategy, task plan, or delivery choice.
+4. **You stay product manager.** The agent owns architecture, data, interfaces, tests, task plan, and delivery owner.
+5. **Technical design traces** to the approved product rules and acceptance lines.
+6. **Product-impacting change:** pause, Grill Me, re-approve the PRD, revise the plan, then resume.
+7. **Build ends** with fresh checks and your acceptance.
 
 ---
 
@@ -314,12 +330,12 @@ Product design settles the choices that change the product:
 - Does it expire?
 - What does an invalid or blocked visitor see?
 
-After you approve, the product edge freezes. The agent picks data model, interfaces, permission checks, test plan, and build plan. It asks you only when a tech limit would change the product, cost, risk, or scope. Then it builds and checks. You review the result.
+After you approve the product-only PRD, the product edge freezes. The agent picks the data model, interfaces, permission checks, test plan, build plan, and delivery owner without a technical approval gate. It asks you only when a technical limit would change the product, cost, risk, or scope. Then it builds and checks. You review the result.
 
 | Step | Artifact |
 |------|----------|
 | 1️⃣ | [Initial request](examples/INPUT.md) |
-| 2️⃣ | [Approved spec](examples/SPEC.md) |
+| 2️⃣ | [Approved product-only PRD](examples/SPEC.md) |
 | 3️⃣ | [Build plan](examples/IMPLEMENTATION-PLAN.md) |
 | 4️⃣ | [Check record](examples/VERIFICATION.md) |
 

@@ -5,7 +5,7 @@
 ## Revision
 
 - Example revision: `saved-search-links-demo`
-- Specification: `SPEC.md`, example revision 1
+- Product PRD: `SPEC.md`, example PRD revision 1
 
 ## Automated checks
 
@@ -24,9 +24,9 @@
 
 ## Review status
 
-- Specification compliance review: complete, no open findings.
+- PRD compliance review: complete, no open findings.
 - Code quality review: complete, no open findings.
 
 ## Remaining limits
 
-- Expiration and audit events remain deferred by the approved specification.
+- Expiration and audit history remain deferred by the approved PRD.

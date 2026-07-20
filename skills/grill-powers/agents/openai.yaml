@@ -1,7 +1,7 @@
 interface:
   display_name: "GrillPowers"
-  short_description: "From hard product questions to verified delivery"
-  default_prompt: "Use $grill-powers to clarify this idea, approve a specification, and carry it through verified delivery."
+  short_description: "Approve the PRD, then delegate delivery"
+  default_prompt: "Use $grill-powers to clarify this product, approve a product-only PRD, and delegate technical delivery to the agent."
 
 policy:
   allow_implicit_invocation: false

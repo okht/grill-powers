@@ -1,131 +1,107 @@
 ---
 name: grill-powers
-description: Use when a user wants to take a product idea or feature from unresolved requirements through an approved specification and verified software delivery, especially when Grill Me and Superpowers are both installed.
+description: Use when a user wants product-manager control of product scope while delegating technical design and verified software delivery to agents.
 ---
 
 # GrillPowers
 
-## Overview
+## Core contract
 
-Connect Grill Me's decision-by-decision clarification to Superpowers' plan-driven delivery. Keep one explicit contract between them: an approved specification produced with `to-spec`, then consumed by `superpowers:writing-plans`.
+Connect Grill Me's decision-by-decision clarification to Superpowers' plan-driven delivery through one boundary: a user-approved, product-only PRD.
 
-Before starting, confirm that every named upstream skill is available. If a dependency is missing, identify it and stop at that boundary. Do not replace the missing stage with an improvised equivalent.
+The user owns product intent and final acceptance. After PRD approval, the agent owns technical design, planning, execution, and verification. Before starting, confirm that every named upstream skill is available. If a dependency is missing, identify it and stop at that boundary.
 
 ## Workflow
 
-### 1. Inspect available facts
+### 1. Inspect product facts
 
-Read the repository, issue, supplied documents, and current behavior before asking questions. Separate:
+Read the repository, issue, supplied documents, and current behavior before asking questions. Separate confirmed facts, unresolved product decisions, and inferences that need confirmation.
 
-- confirmed facts
-- unresolved decisions
-- inferences that still need confirmation
+Repository facts inform the conversation; they do not automatically belong in the PRD. When a technical fact creates a choice that changes product behavior, scope, cost, or risk, present only those product consequences to the user.
 
-Use `grill-with-docs` when the user explicitly wants the discussion recorded in documents. Use `domain-modeling` when the central uncertainty concerns domain concepts, boundaries, or invariants.
+Use `grill-with-docs` when the user explicitly wants the discussion recorded. Use `domain-modeling` when the uncertainty concerns product concepts, boundaries, or invariants.
 
-### 2. Run the Grill Me stage
+### 2. Resolve product decisions
 
-Follow `grilling` for the product-discovery conversation:
+Follow `grilling`:
 
-1. Ask about one decision at a time.
-2. Give a concrete recommendation and its short rationale.
+1. Ask about one product decision at a time.
+2. Give a concrete recommendation and short rationale.
 3. Offer mutually exclusive choices when useful.
 4. Wait for the user's answer before advancing.
-5. Continue until material product decisions are resolved.
+5. Continue until every material product decision is resolved.
 
-Do not start implementation planning while product intent remains materially open.
+Do not ask the user to choose architecture, data models, interfaces, testing strategy, task structure, or delivery tooling.
 
 ### 3. Confirm shared understanding
 
-Recap the proposed product in plain language. Label confirmed facts, remaining uncertainties, and necessary inferences. Ask the user to approve or correct the recap.
+Recap the product in plain language. Label confirmed facts, remaining uncertainties, and necessary inferences. Ask the user to approve or correct the recap.
 
-The gate passes only after explicit approval. If the user changes a material decision, continue the Grill Me stage and recap again.
+Explicit approval authorizes PRD drafting only. If a material product decision changes, continue `grilling` and recap again.
 
-Approval of this recap authorizes specification drafting only. It does not authorize planning or implementation.
+### 4. Produce and approve a product-only PRD
 
-### 4. Produce and approve the specification
+Follow `to-spec` only for synthesis and publishing. For GrillPowers, [the handoff contract](references/handoff-contract.md) replaces the upstream skill's default document shape.
 
-Follow `to-spec` to turn the confirmed understanding into a durable specification. The specification must satisfy [the handoff contract](references/handoff-contract.md).
+The PRD defines users, problems, product behavior, scope, flows, product rules, and observable acceptance criteria. Exclude technical design even when it is known, previously discussed, or suggested by the user. Omit upstream `to-spec` sections for implementation decisions, testing decisions, modules, interfaces, schemas, API contracts, and test seams.
 
-Present the specification for approval. Record the approval and the decisions deliberately deferred. Keep implementation details out unless they are product constraints or already confirmed facts.
+Express permissions, privacy, safety, performance, and compliance as observable product requirements. Leave the implementation mechanism to technical planning.
 
-Open requirements or risk boundaries for permissions, safety, security, data handling, and compliance cannot remain open or deferred at approval time. An implementation technique may remain for planning only when the specification already states the invariant, constraint, and accepted risk boundary. If specification approval is withheld, remain in this stage even when planning is requested.
+Use only confirmed product decisions. If a required PRD section exposes missing product behavior, return to `grilling`; do not invent a requirement or silently convert an inference into scope.
 
-### 5. Hand off to the plan
+Present the exact PRD revision for explicit approval. Recap approval does not approve the PRD. A newly drafted or revised PRD remains `Draft - awaiting approval` until the user approves that revision; the agent cannot approve it on the user's behalf. All blocking product decisions and product risk boundaries must be resolved before approval.
 
-After specification approval, follow `superpowers:writing-plans`. Give it the approved specification as the source of product truth.
+### 5. Hand off to autonomous technical delivery
 
-The plan must trace each work item to an acceptance criterion, include test intent, and identify verification commands or observable evidence.
+After PRD approval, follow `superpowers:writing-plans`. Treat the approved PRD as the complete source of product truth.
 
-Present the plan summary and recommend one delivery owner. Wait for the user to approve the plan and confirm the delivery owner before implementation begins. Either action by itself is insufficient.
+The agent chooses architecture, data, interfaces, tests, work items, verification commands, and one delivery owner. Do not ask the user to approve the technical plan or choose the delivery owner. Share a concise progress summary when useful, then continue.
 
-### 6. Choose one delivery owner
-
-Offer the execution mode that fits the work:
+Select one owner for the full plan:
 
 | Situation | Delivery owner |
 |---|---|
 | Independent tasks in the current session | `superpowers:subagent-driven-development` |
 | A written plan executed in a separate session | `superpowers:executing-plans` |
 
-Let the selected delivery owner control implementation sequencing, TDD, task review, and plan checkpoints. Apply `superpowers:systematic-debugging` when unexpected behavior or test failure appears.
+The selected owner controls implementation sequencing, TDD, task review, and checkpoints. Apply `superpowers:systematic-debugging` when unexpected behavior or test failure appears. Do not run the other owner in parallel or duplicate a review already owned by the executor.
 
-The one-owner rule applies to the full approved plan. The selected owner may coordinate subagents according to its own workflow; do not invoke the other executor as a parallel or nested orchestration layer over the same plan.
+### 6. Verify and finish
 
-To change owners mid-plan, stop the current owner, preserve its state and evidence, and get explicit approval for the replacement. The two owners must never overlap on the same active plan.
-
-Avoid adding a second generic review pass when the selected executor already includes the same review. Add `superpowers:requesting-code-review` only for a distinct, justified review boundary.
-
-### 7. Verify and finish
-
-Before any completion claim, follow `superpowers:verification-before-completion` and run fresh checks. Fresh means the planned verification suite plus checks implied by the final changes ran on the current worktree after the last relevant change to code, configuration, migrations, tests, fixtures, or build inputs, during the current completion assessment. Report the exact evidence and any remaining limits.
+Before any completion claim, follow `superpowers:verification-before-completion` and run fresh checks after the last relevant change. Report exact evidence and remaining limits.
 
 When work occurs on a development branch, follow `superpowers:finishing-a-development-branch` after verification.
 
-### 8. Route material changes back (full re-entry)
+### 7. Route product changes back
 
-Treat a change as material when it changes approved scope, observable behavior, acceptance criteria, domain rules, constraints, permissions, safety, security, or compliance. Material changes can surface in **technical design** or **implementation**. If either stage reveals such a change, pause affected work and re-enter from the product path — do not absorb the change inside coding.
+A change is material when it changes approved product behavior, scope, acceptance criteria, product rules, permissions, privacy, safety, compliance, cost, or risk. Pause affected work and walk this chain in order:
 
-Walk the chain **in order** back to the stage you left:
+`grilling -> shared-understanding approval -> product-only to-spec -> exact revised PRD approval -> writing-plans -> resume`
 
-`grilling → shared-understanding approval → to-spec → writing-plans → resume technical design or delivery`
+Update only the PRD sections affected by the product change and any sections required to restore whole-document consistency. Publish a complete new PRD revision with a short change summary. The user may focus on the diff, but approval applies to the complete revision. Rewrite the full PRD only when the product premise, target users, or core flows have changed so broadly that a local revision cannot remain coherent.
 
-Do not jump from a mid-build product insight straight back into half-finished implementation. The plan, tests, and code must re-trace to the newly approved specification.
+Use technical investigation only to establish the product consequence. Do not place the proposed implementation into the PRD. Independent work may continue while the affected work waits.
 
-Use `superpowers:systematic-debugging` only to reproduce, inspect, and gather the technical facts needed to describe the decision. Do not make behavior-changing edits to affected work until the product decision is approved. Revise the affected plan before resuming delivery.
+Technical discoveries stay in delivery when they preserve the complete approved PRD.
 
-A local implementation discovery may stay in delivery only when it preserves the complete approved contract, including scope, behavior, domain rules, constraints, and acceptance criteria. A clear, low-risk user-visible micro-tweak may stay in delivery only after explicit user confirmation and a recorded small specification revision. A proposed scope item stays outside the approved contract until the user accepts it for the current delivery. While the decision is pending, pause potentially affected work; independent work may continue. Acceptance triggers the full loop; deferral leaves current delivery on its approved path.
+## Quick reference
 
-## Quick Reference
-
-| State | Next skill | Exit condition |
+| State | Next action | Exit condition |
 |---|---|---|
-| Product intent is unresolved | `grilling` | Material decisions are answered |
+| Product intent is unresolved | `grilling` | Material product decisions are answered |
 | Recap is drafted | Wait for the user | Recap is explicitly approved |
-| Recap is approved | `to-spec` | Specification is drafted |
-| Specification is drafted | Wait for the user | Specification is explicitly approved |
-| Specification is approved | `superpowers:writing-plans` | Actionable plan is written |
-| Plan is ready | Wait for the user | Plan and one delivery owner are explicitly approved |
-| Plan and owner are approved | One delivery owner | Planned work and reviews are complete |
-| Implementation and executor-owned reviews are complete | `superpowers:verification-before-completion` | Fresh evidence supports the claim |
-| Branch is verified | `superpowers:finishing-a-development-branch` | User selects a finish path |
+| Recap is approved | Product-only `to-spec` | PRD is drafted |
+| PRD is drafted | Wait for the user | PRD is explicitly approved |
+| PRD is approved | `superpowers:writing-plans` | Technical plan is ready |
+| Technical plan is ready | Agent-selected delivery owner | Work and reviews are complete |
+| Delivery is complete | Fresh verification | Evidence supports the claim |
+| Branch is verified | Finish the branch | User selects the final integration path |
 
-## Example
+## Common mistakes
 
-User: `Use $grill-powers to take saved-search sharing from idea to delivery.`
-
-1. Grill Me resolves audience, access, expiry, revocation, and audit expectations one decision at a time.
-2. The user approves the recap and `SPEC.md`.
-3. `superpowers:writing-plans` maps acceptance criteria to implementation and tests.
-4. One delivery owner executes the plan.
-5. Fresh tests and observable behavior support the completion report.
-
-## Common Mistakes
-
-- Treating a polite recap as approval. Wait for an explicit confirmation.
-- Replacing `to-spec` with an informal handoff. Preserve the fixed specification gate.
-- Sending unresolved product questions into `superpowers:writing-plans`.
-- Running multiple delivery workflows over the same plan.
-- Duplicating a review already owned by the executor.
-- Claiming completion from an earlier test run or an agent report. Run fresh verification.
-- Absorbing a material scope change inside implementation. Route it back through discovery and specification.
+- Letting upstream `to-spec` add implementation or testing sections to the PRD.
+- Copying incidental repository facts into the PRD.
+- Treating recap approval as approval of the exact PRD revision.
+- Inventing product behavior to fill a required PRD section.
+- Asking the user to approve architecture, the technical plan, or the delivery owner.
+- Allowing technical choices to silently change the approved product.
