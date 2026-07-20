@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🔥 GrillPowers
+<img src="../assets/logo.png" alt="GrillPowers logo" height="140" />
+
+# GrillPowers
 
 ### *「先确认纯产品 PRD，再把技术完全交给智能体，最后用验证结果完成交付。」*
 

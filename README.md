@@ -1,6 +1,8 @@
 <div align="center">
 
-# 🔥 GrillPowers
+<img src="docs/assets/logo.png" alt="GrillPowers logo" height="140" />
+
+# GrillPowers
 
 ### *"Clarify the product. Approve the PRD. Ship with proof."*
 
