@@ -9,23 +9,24 @@
 ![Upstreams: commit pinned](https://img.shields.io/badge/upstreams-commit%20pinned-8250df)
 ![Host: Codex](https://img.shields.io/badge/host-Codex-10a37f)
 
-![Discovery: one decision at a time](https://img.shields.io/badge/discovery-one%20decision%20at%20a%20time-0969da)
-![Gate: specification approval](https://img.shields.io/badge/gate-specification%20approval-d73a49)
-![Delivery: plan driven](https://img.shields.io/badge/delivery-plan%20driven-1a7f37)
-![Completion: fresh evidence](https://img.shields.io/badge/completion-fresh%20evidence-b35900)
+![Product: one decision at a time](https://img.shields.io/badge/product-one%20decision%20at%20a%20time-0969da)
+![Boundary: approved product spec](https://img.shields.io/badge/boundary-approved%20product%20spec-d73a49)
+![Technical design: agent owned](https://img.shields.io/badge/technical%20design-agent%20owned-8250df)
+![Implementation: evidence driven](https://img.shields.io/badge/implementation-evidence%20driven-1a7f37)
 
 <table>
 <tr><td align="left">
-Coding starts while key product decisions remain unresolved.<br>
-Assumptions leak from conversation into implementation.<br>
-Completion is declared before tests, review, and fresh verification.
+Product requirements and technical requirements get mixed into one conversation.<br>
+Non-technical users are pulled into implementation choices they cannot evaluate.<br>
+Every technical branch can reopen scope, so requirements grow instead of converging.
 </td></tr>
 </table>
 
-**GrillPowers connects one-decision-at-a-time product clarification to plan-driven engineering through an explicit specification gate.**
+**GrillPowers separates product design, technical design, and implementation so the user can stay in the product-manager role from idea to acceptance.**
 
-`Idea → clarify → approve specification → plan → TDD → review → verify → finish`
+`Idea → product design → technical design → implementation → verification → product acceptance`
 
+<a href="#why">Why</a> ·
 <a href="#install">Install</a> ·
 <a href="#workflow">Workflow</a> ·
 <a href="#usage">Usage</a> ·
@@ -37,6 +38,25 @@ Completion is declared before tests, review, and fresh verification.
 </div>
 
 ---
+
+<a id="why"></a>
+
+## 🎯 Why GrillPowers exists
+
+GrillPowers began with a practical goal: combine the most useful parts of Grill Me and Superpowers, then remove the interaction patterns that create role confusion or scope drift for a non-technical product manager.
+
+- **Grill Me contributes product focus.** It inspects existing facts, asks one meaningful product question at a time, recommends a direction, and waits for explicit confirmation.
+- **Superpowers contributes engineering discipline.** Planning, test-driven implementation, systematic debugging, review ownership, and fresh verification all make delivery more reliable.
+
+Used directly in product-facing work, Superpowers often discusses product requirements and technical requirements in the same thread. A user without an engineering background can be pulled into architecture choices they cannot evaluate. Each new technical option can reopen the product boundary, making the requirement set larger and harder to converge.
+
+GrillPowers keeps the strengths of both systems and introduces three hard stage boundaries:
+
+| Pain | GrillPowers solution | Advantage |
+|---|---|---|
+| Product and technical questions are discussed together. | Finish and approve product design before technical design begins. | Scope converges around product value and acceptance criteria. |
+| The user is expected to answer implementation questions. | The agent owns architecture, data, interfaces, tests, and task planning. | The user only needs to act as the product manager. |
+| Technical possibilities repeatedly expand the requirement set. | Any technical choice that changes behavior, scope, cost, or risk returns to product design for a deliberate decision. | Technical work cannot silently enlarge the product. |
 
 <a id="modes"></a>
 
@@ -51,16 +71,15 @@ The managed installer performs a preflight check and stops when a target already
 
 <a id="systems"></a>
 
-## ✨ Four stages, one workflow
+## ✨ Three stages, one product-manager role
 
-| Stage | Owner | Responsibility | Exit condition |
+| Stage | User role | Agent responsibility | Exit condition |
 |---|---|---|---|
-| Product discovery | Grill Me | Inspect facts, question one decision at a time, and confirm shared understanding. | The user explicitly approves the recap. |
-| Specification gate | `to-spec` | Turn confirmed intent into scope, flows, domain rules, and testable acceptance criteria. | The user approves `SPEC.md`. |
-| Delivery planning | `superpowers:writing-plans` | Convert approved acceptance criteria into ordered implementation and test work, then recommend one delivery owner. | The user approves both the plan and the delivery owner. |
-| Engineering delivery | One Superpowers executor | Implement with TDD, handle failures systematically, own reviews, and gather fresh evidence. | Verification supports the completion claim. |
+| **1. Product design** | Define the audience, value, scope, business rules, and acceptance criteria. | Inspect facts, ask one product decision at a time, recommend a direction, and write the product specification. | The user approves the product specification. |
+| **2. Technical design** | Decide only trade-offs that change product behavior, scope, cost, or risk. | Translate the approved product into architecture, data, interfaces, test strategy, and an implementation plan. | The design covers every acceptance criterion without changing the approved product boundary. |
+| **3. Implementation** | Review the observable product result and accept or reject it. | Implement, test, debug, review, and run fresh verification. | Evidence supports the result and the user completes product acceptance. |
 
-GrillPowers is the bridge. It keeps the handoff stable and routes material product changes back through discovery and specification before delivery continues.
+The user only needs to be the product manager: decide what should exist, who it serves, where the boundary sits, and what counts as done. GrillPowers owns the technical path from the approved product design to verified implementation.
 
 <a id="workflow"></a>
 
@@ -68,28 +87,28 @@ GrillPowers is the bridge. It keeps the handoff stable and routes material produ
 
 ```mermaid
 flowchart LR
-    I["Idea or change"] --> G["Grill Me"]
-    G --> U{"Shared understanding approved?"}
-    U -- "No" --> G
-    U -- "Yes" --> S["Approved SPEC.md"]
-    S --> P["Implementation plan"]
-    P --> A{"Plan and owner approved?"}
-    A -- "No" --> P
-    A -- "Yes" --> D["TDD delivery"]
-    D --> R["Owned reviews"]
-    R --> V["Fresh verification"]
-    V --> F["Finish path"]
-    classDef discovery fill:#ddf4ff,stroke:#0969da,color:#000
+    I["Idea or change"] --> P["1. Product design"]
+    P --> S{"Product spec approved?"}
+    S -- "No" --> P
+    S -- "Yes" --> T["2. Technical design"]
+    T --> C{"Changes product boundary?"}
+    C -- "Yes" --> P
+    C -- "No" --> D["3. Implementation"]
+    D --> V["Tests, review, verification"]
+    V --> A["Product acceptance"]
+    classDef product fill:#ddf4ff,stroke:#0969da,color:#000
     classDef gate fill:#ffebe9,stroke:#cf222e,color:#000
-    classDef delivery fill:#dafbe1,stroke:#1a7f37,color:#000
+    classDef technical fill:#fff8c5,stroke:#9a6700,color:#000
+    classDef implementation fill:#dafbe1,stroke:#1a7f37,color:#000
     classDef evidence fill:#fff8c5,stroke:#9a6700,color:#000
-    class I,G discovery
-    class U,S,A gate
-    class P,D,R delivery
-    class V,F evidence
+    class I,P product
+    class S,C gate
+    class T technical
+    class D,V implementation
+    class A evidence
 ```
 
-The approval gate separates product truth from implementation choice. If delivery reveals a material behavior or scope decision, the loop returns to Grill Me, updates `SPEC.md`, and revises the plan.
+The user participates at the product-design and product-acceptance points. Technical design and implementation stay agent-owned. When a technical discovery would change the approved product boundary, the workflow pauses and returns the decision to the product manager.
 
 <a id="managed"></a>
 
@@ -100,14 +119,14 @@ The approval gate separates product truth from implementation choice. If deliver
 - One original orchestration skill: `skills/grill-powers`
 - Matt Pocock Skills pinned to `9603c1cc8118d08bc1b3bf34cf714f62178dea3b`
 - Superpowers v6.1.1 pinned to `d884ae04edebef577e82ff7c4e143debd0bbec99`
-- A curated discovery surface that keeps Matt on product discovery and Superpowers on engineering delivery
+- One user-facing GrillPowers entrypoint over a curated set of pinned upstream methods
 
 ### Working artifacts
 
-- An approved `SPEC.md` with testable acceptance criteria
-- An implementation plan traced back to the specification
+- An approved product specification with testable acceptance criteria
+- An agent-owned technical design and implementation plan traced back to the product specification
 - Code and tests produced by one delivery owner
-- Review findings and fresh verification evidence
+- Review findings, fresh verification evidence, and product acceptance
 
 GrillPowers keeps these artifacts in the user's project. This repository contains the workflow definition, installation metadata, and fictional examples only.
 
@@ -173,26 +192,25 @@ Use $grill-powers to take saved-search sharing from an unresolved idea through v
 
 Expect this interaction contract:
 
-1. Grill Me inspects available facts and asks one decision question.
-2. Each question includes a recommendation; the workflow waits for your answer.
-3. You approve a shared-understanding recap.
-4. You review and approve `SPEC.md`.
-5. Superpowers writes the implementation plan and recommends one delivery owner.
-6. You explicitly approve both the plan and that owner.
-7. Delivery proceeds through TDD, owned reviews, fresh verification, and a finish choice.
+1. Describe the product goal in product language.
+2. GrillPowers inspects available facts and asks one product decision at a time, with a recommendation.
+3. Approve the product design and its acceptance criteria.
+4. GrillPowers completes the technical design and implementation plan. It returns only choices that change product behavior, scope, cost, or risk.
+5. GrillPowers implements, tests, debugs, reviews, and verifies the result.
+6. Review the observable product and complete product acceptance.
 
-You retain every product decision. GrillPowers preserves those decisions as the contract for engineering work.
+You remain the product manager throughout the workflow. GrillPowers preserves your product decisions as the contract for all technical work.
 
 <a id="principles"></a>
 
 ## 🛡 Operating principles
 
-1. **Inspect before asking.** Use repository and document facts to avoid questions that already have answers.
-2. **One decision at a time.** Keep each answer meaningful and reduce accidental agreement.
-3. **Approval is explicit.** A recap and a specification each need a clear confirmation.
-4. **One delivery owner.** Choose one Superpowers executor so TDD, checkpoints, and reviews have clear ownership.
-5. **Scope changes loop back.** A material product change updates discovery, specification, and plan in that order.
-6. **Evidence stays fresh.** Completion claims cite commands and observable results produced after the final change.
+1. **Product design comes first.** Technical possibilities cannot define the product boundary by accident.
+2. **One product decision at a time.** Recommendations make each choice understandable and convergent.
+3. **The user stays in the product-manager role.** Architecture, data, interfaces, tests, and task planning belong to the agent.
+4. **Technical design follows the approved product.** It must trace back to product rules and acceptance criteria.
+5. **Product-impacting changes loop back.** Behavior, scope, cost, or risk changes require a deliberate product decision.
+6. **Implementation ends with evidence and acceptance.** Fresh checks support the technical result; the user accepts the product result.
 
 <a id="example"></a>
 
@@ -202,7 +220,7 @@ The initial request is deliberately incomplete:
 
 > Let users share a saved search. We need it quickly.
 
-Grill Me resolves the choices that change the product:
+During product design, GrillPowers resolves the choices that change the product:
 
 - Who may create and open a link?
 - Does access require an account?
@@ -210,7 +228,7 @@ Grill Me resolves the choices that change the product:
 - Does it expire?
 - What should an invalid or unauthorized visitor see?
 
-After the user approves the answers, `to-spec` captures the flow, scope, domain rules, and acceptance criteria. `superpowers:writing-plans` then chooses implementation steps and test cases. One executor owns delivery; verification records the final commands and observed behavior.
+After the user approves those answers, GrillPowers freezes the product boundary. During technical design, the agent chooses the data model, interfaces, permission checks, test strategy, and implementation plan. It asks the user only when a technical constraint changes the product experience, cost, risk, or scope. During implementation, the agent builds and verifies the feature; the user reviews the resulting product behavior.
 
 See the complete fictional artifact chain:
 
