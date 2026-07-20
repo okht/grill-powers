@@ -233,68 +233,49 @@ flowchart LR
 
 ## ⚡ 安装
 
-### 要求
+你已经有 Agent 了——把地址丢给它，让它一键装好。在 Codex（或任何能拉取 skill 的宿主）里贴这一句：
 
-- Windows PowerShell 5.1 或更高版本
-- Git
-- Codex 通过本地 skills 目录发现技能
+> 帮我安装 GrillPowers：`https://github.com/okht/grill-powers`
 
-### 🧩 选择安装方式
+Agent 应克隆仓库，把 `skills/grill-powers` 放到宿主能发现的 skills 目录，并在合适时跑托管安装器，拉齐锁定版本的 Grill Me 与 Superpowers。装完后用 `$grill-powers` 启动即可。
+
+<details>
+<summary><b>🛠️ 想用脚本或手动装？点这里</b></summary>
+
+<br>
+
+**要求：** Windows PowerShell 5.1+、Git、Codex 通过本地 skills 目录发现技能。
 
 | 方式 | 适合场景 | 执行内容 |
 |---|---|---|
-| **托管式隔离安装** | 需要干净、可复现的配置 | 安装器按锁定提交获取两个上游，安装 GrillPowers 桥接技能，只公开精选技能。 |
-| **手动集成** | 当前机器已经管理 Matt Pocock Skills 或 Superpowers | 保留现有上游目录，添加 `skills/grill-powers`，并按照 `config/skill-selection.json` 配置发现范围。 |
-
-托管安装器会先执行预检；目标已存在时会停止。dry-run 会打印计划路径，安装器不会静默替换现有安装。
-
-### 托管安装
-
-先运行 dry-run：
+| **托管式隔离安装** | 干净、可复现 | 按锁定提交拉取两个上游，安装 GrillPowers 桥接，只公开精选技能。 |
+| **手动集成** | 本机已管理 Matt / Superpowers | 保留现有上游目录，添加 `skills/grill-powers`，对齐 `config/skill-selection.json`。 |
 
 ```powershell
+# 先 dry-run，再安装并验证
 Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\install.ps1 -WhatIf
-```
-
-检查打印出的路径，然后安装并验证：
-
-```powershell
 .\scripts\install.ps1
 .\scripts\verify.ps1
 ```
 
-两个脚本都接受 `-InstallRoot` 与 `-DiscoveryRoot`，可用于隔离安装或测试。如果本地已有位于锁定提交、工作树干净的 checkout，安装器还接受 `-MattSourceRoot` 与 `-SuperpowersSourceRoot`。
+脚本支持 `-InstallRoot` / `-DiscoveryRoot`；本地已有锁定提交的干净 checkout 时可用 `-MattSourceRoot` / `-SuperpowersSourceRoot`。托管安装器会预检，目标已存在则停止，不会静默覆盖。
 
-<details>
-<summary><b>🛠️ 手动集成？点开看步骤</b></summary>
+**手动集成**（两个上游已由别处管理版本时）：
 
-<br>
-
-如果两个上游项目已经由其他系统安装并管理版本：
-
-1. 把 `skills/grill-powers` 复制到宿主的技能目录。
+1. 把 `skills/grill-powers` 复制到宿主技能目录。
 2. 保持上游命名空间与完整技能目录。
-3. 公开 `config/skill-selection.json` 中列出的入口。
-4. 确认 `to-spec` 会交接给 `superpowers:writing-plans`。
-5. 在宿主环境中运行技能验证器。
+3. 公开 `config/skill-selection.json` 中的入口。
+4. 确认 `to-spec` 交接给 `superpowers:writing-plans`。
+5. 在宿主环境跑技能验证器。
 
-</details>
-
-<details>
-<summary><b>🧪 维护者回归测试</b></summary>
-
-<br>
-
-维护者可以准备两个位于锁定提交、工作树干净的 checkout，验证 dry-run、冲突拒绝、隔离安装、路由与篡改检测：
+**维护者回归**（两个锁定提交的干净 checkout）：
 
 ```powershell
 .\scripts\test-install.ps1 `
   -MattSourceRoot C:\path\to\mattpocock-skills `
   -SuperpowersSourceRoot C:\path\to\superpowers
 ```
-
-测试套件会在操作系统临时目录下创建唯一测试根目录，清理范围只包含该测试根目录。
 
 </details>
 

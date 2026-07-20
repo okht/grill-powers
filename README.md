@@ -233,68 +233,49 @@ GrillPowers keeps these artifacts in the user's project. This repository contain
 
 ## ⚡ Install
 
-### Requirements
+You already have an agent — let it install itself. Paste this into Codex (or any host that can fetch skills):
 
-- Windows PowerShell 5.1 or newer
-- Git
-- Codex skill discovery through a local skills directory
+> Install the GrillPowers skill for me: `https://github.com/okht/grill-powers`
 
-### 🧩 Choose an installation mode
+The agent should clone the repo, place `skills/grill-powers` where your host discovers skills, and (when appropriate) run the managed installer so the pinned Grill Me + Superpowers upstreams are available. When it finishes, start with `$grill-powers`.
+
+<details>
+<summary><b>🛠️ Prefer scripts or manual install? Click here</b></summary>
+
+<br>
+
+**Requirements:** Windows PowerShell 5.1+, Git, Codex skill discovery via a local skills directory.
 
 | Mode | Best for | What happens |
 |---|---|---|
-| **Managed isolated install** | A clean, reproducible setup | The installer fetches both upstreams at locked commits, installs the GrillPowers bridge, and exposes only the selected skills. |
-| **Manual integration** | A machine that already manages Matt Pocock Skills or Superpowers | Keep the existing upstream directories, add `skills/grill-powers`, and mirror the selection in `config/skill-selection.json`. |
-
-The managed installer performs a preflight check and stops when a target already exists. It prints its intended paths in dry-run mode and does not silently replace an installation.
-
-### Managed install
-
-Run the dry check first:
+| **Managed isolated install** | Clean, reproducible setup | Fetches both upstreams at locked commits, installs the GrillPowers bridge, exposes only the selected skills. |
+| **Manual integration** | Machine that already manages Matt Pocock Skills or Superpowers | Keep existing upstream dirs, add `skills/grill-powers`, mirror `config/skill-selection.json`. |
 
 ```powershell
+# Dry-run first, then install + verify
 Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\install.ps1 -WhatIf
-```
-
-Review the printed paths, then install and verify:
-
-```powershell
 .\scripts\install.ps1
 .\scripts\verify.ps1
 ```
 
-Both scripts accept `-InstallRoot` and `-DiscoveryRoot` for isolated or test installations. The installer also accepts `-MattSourceRoot` and `-SuperpowersSourceRoot` when clean local checkouts already exist at the locked commits.
+Scripts accept `-InstallRoot` / `-DiscoveryRoot`. Use `-MattSourceRoot` / `-SuperpowersSourceRoot` when clean local checkouts already sit on the locked commits. The managed installer preflights, refuses to clobber an existing target, and never silently replaces an install.
 
-<details>
-<summary><b>🛠️ Manual integration? Click for steps</b></summary>
+**Manual integration** when both upstreams are already versioned elsewhere:
 
-<br>
+1. Copy `skills/grill-powers` into the host skill directory.
+2. Keep upstream namespaces and full skill trees intact.
+3. Expose entries in `config/skill-selection.json`.
+4. Confirm `to-spec` hands off to `superpowers:writing-plans`.
+5. Run the host skill validator.
 
-If both upstream projects are already installed and versioned by another system:
-
-1. Copy `skills/grill-powers` into the host's skill directory.
-2. Keep the upstream namespaces and complete skill directories intact.
-3. Expose the entries listed in `config/skill-selection.json`.
-4. Confirm that `to-spec` hands off to `superpowers:writing-plans`.
-5. Run the skill validator from the host environment.
-
-</details>
-
-<details>
-<summary><b>🧪 Maintainer regression suite</b></summary>
-
-<br>
-
-Maintainers can exercise dry-run, conflict refusal, isolated installation, routing, and tamper detection with two clean checkouts at the locked commits:
+**Maintainer regression** (two clean locked checkouts):
 
 ```powershell
 .\scripts\test-install.ps1 `
   -MattSourceRoot C:\path\to\mattpocock-skills `
   -SuperpowersSourceRoot C:\path\to\superpowers
 ```
-
-The suite creates a unique operating-system temp directory and limits cleanup to that test root.
 
 </details>
 
