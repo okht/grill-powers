@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "profile": "grill-powers-v1",
+  "handoff": "to-spec -> superpowers:writing-plans",
+  "originalSkill": "grill-powers",
+  "mattpocock": {
+    "active": [
+      "setup-matt-pocock-skills",
+      "grill-me",
+      "grilling",
+      "grill-with-docs",
+      "domain-modeling",
+      "to-spec"
+    ],
+    "inactive": [
+      "to-tickets",
+      "implement",
+      "tdd",
+      "code-review"
+    ],
+    "paths": {
+      "setup-matt-pocock-skills": "engineering/setup-matt-pocock-skills",
+      "grill-me": "productivity/grill-me",
+      "grilling": "productivity/grilling",
+      "grill-with-docs": "engineering/grill-with-docs",
+      "domain-modeling": "engineering/domain-modeling",
+      "to-spec": "engineering/to-spec",
+      "to-tickets": "engineering/to-tickets",
+      "implement": "engineering/implement",
+      "tdd": "engineering/tdd",
+      "code-review": "engineering/code-review"
+    }
+  },
+  "superpowers": {
+    "active": [
+      "dispatching-parallel-agents",
+      "executing-plans",
+      "finishing-a-development-branch",
+      "receiving-code-review",
+      "requesting-code-review",
+      "subagent-driven-development",
+      "systematic-debugging",
+      "test-driven-development",
+      "using-git-worktrees",
+      "verification-before-completion",
+      "writing-plans",
+      "writing-skills"
+    ],
+    "inactive": [
+      "brainstorming",
+      "using-superpowers"
+    ],
+    "supportPaths": [
+      "using-superpowers/references"
+    ]
+  },
+  "discoveryLinks": {
+    "original": "grill-powers",
+    "mattpocock": "mattpocock",
+    "superpowers": "superpowers"
+  }
+}
